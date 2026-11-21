@@ -26,8 +26,7 @@ if ($_REQUEST['Action']=="Export")
 	";
 	
 	$X=0;
-	$Sql = "select * from Status where StatusID>=1 order by Sort";
-	$Result = SQL($Sql);
+	$Result = SQL("select * from Status where StatusID>=1 order by Sort");
 	foreach ($Result as $Row)
 	{
 	$X++;
@@ -129,9 +128,9 @@ exit;
 		
 		";
 
-		if ($SortBy=="")
+		if ($OrderBy=="")
 		{
-			$SortBy="Sort";
+			$OrderBy="Sort";
 		}
 		
 		if ($Direction=="")
@@ -145,8 +144,7 @@ exit;
 		}
 
 		$X=0;
-		$Sql = "select * from Status where StatusID>=1 order by $SortBy $Direction";
-		$Result = SQL($Sql);
+		$Result = SQL("select * from Status where StatusID>=1 order by $OrderBy $Direction");
 		foreach ($Result as $Row)
 		{
 		
@@ -195,7 +193,7 @@ exit;
 			{
 				if ($Row['Service']=="postfix" or $Row['Service']=="dovecot")
 				{
-				echo "<a href=\"javascript:Load('$CurrentFileName?Fix=1&Service={$Row['Service']}&SortBy=$SortBy&SortDir=$SortDir&ControlID=$ControlID&Page=$Page','$ControlID')\" class=Action>Fix</a>";
+				echo "<a href=\"javascript:Load('$CurrentFileName?Fix=1&Service={$Row['Service']}&OrderBy=$OrderBy&SortDir=$SortDir&ControlID=$ControlID&Page=$Page','$ControlID')\" class=Action>Fix</a>";
 				}
 			}
 			
@@ -211,7 +209,7 @@ exit;
 				}
 				else
 				{
-				echo "<a href=\"javascript:Load('$CurrentFileName?Fix=1&Service={$Row['Service']}&SortBy=$SortBy&SortDir=$SortDir&ControlID=$ControlID&Page=$Page','$ControlID')\" class=Action>Fix</a>";
+				echo "<a href=\"javascript:Load('$CurrentFileName?Fix=1&Service={$Row['Service']}&OrderBy=$OrderBy&SortDir=$SortDir&ControlID=$ControlID&Page=$Page','$ControlID')\" class=Action>Fix</a>";
 				}
 			}
 			

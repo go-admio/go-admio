@@ -58,35 +58,35 @@ echo "
 	<tr>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPHost')\">SMTP Hostname</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPHost')\">SMTP Hostname</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPUser')\">SMTP Username</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPUser')\">SMTP Username</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPPass')\">SMTP Password</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPPass')\">SMTP Password</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPPort')\">SMTP Port</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPPort')\">SMTP Port</a>
     </TH>
 	
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPAuth')\">SMTP Auth</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPAuth')\">SMTP Auth</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPStatus')\">Status</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPStatus')\">Status</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPActive')\">Active</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPActive')\">Active</a>
     </TH>
 
 	</tr>
@@ -103,12 +103,12 @@ echo "
 
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
     
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

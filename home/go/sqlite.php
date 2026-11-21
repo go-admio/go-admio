@@ -1,5 +1,4 @@
 <?php
-
 include "navigator.php";
 include "no.php";
 $Buttons="";
@@ -13,7 +12,7 @@ $SQLiteID=$_REQUEST['SQLiteID'];
 if ($phpLiteAdmin==1)
 {
 	
-	$Result = SQL("select * from SQLite where SQLiteID='$SQLiteID'");
+	$Result = SQL("SELECT * FROM SQLite WHERE SQLiteID = ?", [$SQLiteID]);
 	foreach ($Result as $Row)
 	{
 		$_SESSION['SessionSQLiteDirectory']="/home/{$Row['Domain']}/sqlite";
@@ -160,11 +159,11 @@ if($Edit!=1)
 	";
 
 	$Table="SQLite";$Field="SQLiteID>=1";
-	$DefaultSortBy="Username";
+	$DefaultOrderBy="Username";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
-	$Result = SQL($Sql);
+	$Result = SQL($SQL);
 	foreach ($Result as $Row)
 	{
 

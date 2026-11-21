@@ -1,5 +1,4 @@
 <?php
-
 include "navigator.php";
 $Buttons="";
 include "title.php";
@@ -13,6 +12,21 @@ $APIID=$_REQUEST['APIID'];
 $IP=$_REQUEST['IP'];
 $Command=$_REQUEST['Command'];
 
+if ($_SESSION['SessionType']!="Root")
+{
+	Echo "
+	Sorry, You Are Not Allowed to Access This Page
+	";
+
+	exit;
+}
+
+if ($DemoPassword!="")
+{
+echo Error($LNG['ThisFunctionalityNotAvailableDemoMode']);
+exit;
+}
+
 If ($Delete==1 and $Step==1)
 {
 
@@ -25,8 +39,7 @@ If ($Delete==1 and $Step==1)
 if ($Delete==1 and $Step==2)
 {
 
-	$Sql = "DELETE from API where APIID='$APIID'";
-	$Result = SQL($Sql);
+	$Result = SQL("DELETE from API where APIID=?", [$APIID]);
 	If ($Result)
 	{
 		echo Error("API $APIKey \"{$Name}\" has been deleted.");
@@ -48,8 +61,7 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 		$APIKey=GeneratePassword(50);
 		}
 		
-		$Sql = "UPDATE API SET APIKey='$APIKey' where APIID='$APIID'";
-		$Result = SQL($Sql);
+		$Result = SQL("UPDATE API SET APIKey=? where APIID=?", [$APIKey,$APIID]);
 		If ($Result)
 		{
 		echo Error("API $APIKey ($APIID) updated successfully.");
@@ -74,8 +86,7 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 			
 		}
 		
-		$Sql = "UPDATE API SET Name='$Name',APIKey='$APIKey',Command='$Command',IP='$IP' WHERE APIID='$APIID'";
-		$Result = SQL($Sql);
+		$Result = SQL("UPDATE API SET Name=?,APIKey=?,Command=?,IP=? WHERE APIID=?", [$Name,$APIKey,$Command,$IP,$APIID]);
 		If ($Result)
 		{
 		echo Error("API $APIKey updated successfully.");
@@ -111,8 +122,7 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 		$APIKey=GeneratePassword(16);
 		}
 		
-		$Sql = "INSERT INTO API (Name,APIKey,Command,IP,TimeStamp) VALUES ('$Name','$APIKey','$Command','$IP','$TimeStamp')";
-		$Result = SQL($Sql);
+		$Result = SQL("INSERT INTO API (Name,APIKey,Command,IP,TimeStamp) VALUES (?,?,?,?,?)", [$Name,$APIKey,$Command,$IP,$TimeStamp]);
 		If ($Result)
 		{
 		echo Error("API $APIKey created successfully.");
@@ -127,8 +137,7 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 	$Command="";
 	if ($Edit==1)
 	{
-		$Sql = "select * from API where APIID='$APIID'";
-		$Result = SQL($Sql);
+		$Result = SQL("select * from API where APIID=?", [$APIID]);
 		foreach ($Result as $Row)
 		{ 
 			$Name=$Row['Name'];
@@ -213,21 +222,21 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 		<tr>
 		
 		<th align='$DAlign' width='20%'>
-		<a href=\"javascript:Load('$CurrentFileName?SortBy=Name')\">{$LNG['FriendlyName']}</a>
+		<a href=\"javascript:Load('$CurrentFileName?OrderBy=Name')\">{$LNG['FriendlyName']}</a>
 		</th>
 
 
 		<th align='$DAlign' width='20%'>
-		<a href=\"javascript:Load('$CurrentFileName?SortBy=APIKey')\">{$LNG['APIKey']}</a>
+		<a href=\"javascript:Load('$CurrentFileName?OrderBy=APIKey')\">{$LNG['APIKey']}</a>
 		</th>
 
 		<th align='$DAlign' width='10%'>
-		<a href=\"javascript:Load('$CurrentFileName?SortBy=IP')\">{$LNG['IP']}</a>
+		<a href=\"javascript:Load('$CurrentFileName?OrderBy=IP')\">{$LNG['IP']}</a>
 		</th>
 
 
 		<th align='$DAlign' width='20%'>
-		<a href=\"javascript:Load('$CurrentFileName?SortBy=TimeStamp')\">{$LNG['CreatedDate']}</a>
+		<a href=\"javascript:Load('$CurrentFileName?OrderBy=TimeStamp')\">{$LNG['CreatedDate']}</a>
 		</th>
 		
 		<th width='30%'>
@@ -242,13 +251,13 @@ elseif ($_REQUEST['IP']!="" or $Reset==1)
 
 
 		$Table="API";$Field="APIID>=1";
-		$DefaultSortBy="APIID";
+		$DefaultOrderBy="APIID";
 		$DefaultDirection="DESC";
 		include "include/sql.php";
 		
 		$X=0;
 
-		$Result=SQL($Sql);
+		$Result=SQL($SQL);
 		foreach ($Result as $Row)
 		{
 		

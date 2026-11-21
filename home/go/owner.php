@@ -84,9 +84,7 @@ If ($Action=="ListOwner")
 	
 if ($ChangeOwner==1)
 {
-
-	SQL("UPDATE Site set UserID='$UserID' where Domain='$Domain'");
-
+	SQL("UPDATE Site set UserID=? where Domain=?", [$UserID, $Domain]);
 }
 
 
@@ -111,19 +109,19 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	<tr>
 	
     <TH align='$DAlign' width='35%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
     </TH>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=BandwidthUsed')\">{$LNG['BandwidthUsage']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=BandwidthUsed')\">{$LNG['BandwidthUsage']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=UserID')\">{$LNG['Owner']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=UserID')\">{$LNG['Owner']}</a>
     </TH>
 
     <TH width='5%'>
@@ -144,14 +142,14 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	}
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
     
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

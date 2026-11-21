@@ -22,8 +22,7 @@ $CheckList=$_REQUEST['CheckList'];
     
     if ($UpdateBackupDate==1)
     {
-        $Sql = "UPDATE Site Set BackupDate='$Date' where SiteID='$SiteID'";
-        $Result = SQL($Sql);
+		$Result = SQL("UPDATE Site Set BackupDate=? where SiteID=?", [$Date, $SiteID]);
         If ($Result)
         {
         echo Error("Backup date has been updated.");
@@ -38,10 +37,7 @@ If ($Action=="Unlimited")
 
 	for ($i=0 ;$i<$CountCheckList ; $i++)
 	{
-
-		$Sql = "UPDATE Site SET DiskSpace='0' where SiteID='$CheckList[$i]'";
-		$Result = SQL($Sql);
-		
+		$Result = SQL("UPDATE Site SET DiskSpace='0' where SiteID=?", [$CheckList[$i]]);
 	}
 
 	echo Error("Site(s) quota has been updated.");
@@ -90,13 +86,13 @@ If ($Action=="Unlimited")
 	";
 
 	$Table="Site";$Field="SpaceUsed>DiskSpace and DiskSpace!=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		

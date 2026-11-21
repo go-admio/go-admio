@@ -9,13 +9,13 @@ $Domain=$_REQUEST['Domain'];
 
 if ($Action=="Enable")
 {
-	SQL("UPDATE Site SET PostfwdIgnore='1' where SiteID='$SiteID'");
+	SQL("UPDATE Site SET PostfwdIgnore='1' where SiteID=?", [$SiteID]);
 	SSH ("/usr/bin/sudo screen -d -m bash -c '/go/vmail'",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 }
 
 if ($Action=="Disable")
 {
-	SQL("UPDATE Site SET PostfwdIgnore='0' where SiteID='$SiteID'");
+	SQL("UPDATE Site SET PostfwdIgnore='0' where SiteID=?", [$SiteID]);
 	SSH ("/usr/bin/sudo screen -d -m bash -c '/go/vmail'",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 }
 
@@ -24,7 +24,6 @@ if ($Action=="Restore")
 	SQL("UPDATE Config SET ServerLimit='10000',ExternalLimit='5000',DomainLimit='250',UserLimit='20'");
 	SSH ("/usr/bin/sudo screen -d -m bash -c '/go/vmail'",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 }
-
 
 $Result = SQL("select * from Config where ConfigID=1");
 foreach ($Result as $Row)
@@ -66,7 +65,7 @@ Echo "
 <input type='text' value='$SMTPDelay' id='SMTPDelay' onchange=\"Config('SMTPDelay',encodeURI(document.getElementById('SMTPDelay').value))\" class=InputText> / Emails Second (0 = No Delay)
 </div>
 
-<div class='DivInput {$Dir}DivInput'>Email Outbound Queue Alerts:<br>
+<div class='DivInput {$Dir}DivInput'>Email Outbound Queue Alerts<br>
 <input type='text' value='$QueueNo' id='QueueNo' onchange=\"Config('QueueNo',encodeURI(document.getElementById('QueueNo').value))\" class=InputText>
 </div>
 
@@ -90,19 +89,19 @@ Echo "
 <tr>
 
 <TH align='$DAlign' width='30%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
 </TH>
 
 <TH align='$DAlign' width='30%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=PostfwdDomainLimit')\">Domain Limit / Emails Day</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=PostfwdDomainLimit')\">Domain Limit / Emails Day</a>
 </TH>
 
 <TH align='$DAlign' width='30%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=PostfwdUserLimit')\">User Limit / Emails Hour</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=PostfwdUserLimit')\">User Limit / Emails Hour</a>
 </TH>
 
 <TH align='center' width='10%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=PostfwdIgnore')\">Custom Rate Limiting</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=PostfwdIgnore')\">Custom Rate Limiting</a>
 </TH>
 
 </tr>
@@ -112,12 +111,12 @@ Echo "
 ";
 
 $Table="Site";$Field="Trash=0";
-$DefaultSortBy="Domain";
+$DefaultOrderBy="Domain";
 $DefaultDirection="ASC";
 include "include/sql.php";
 
 $X=0;
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	$SiteID=$Row['SiteID'];

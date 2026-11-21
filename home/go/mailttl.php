@@ -28,11 +28,11 @@ if ($Action!="")
 	<tr>
 	
     <TH align='$DAlign' width='80%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 	
     <TH align='center' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=MailTTL')\">Email TTL (Days)</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=MailTTL')\">Email TTL (Days)</a>
     </TH>
 	
 	</tr>
@@ -43,12 +43,12 @@ if ($Action!="")
 	
 
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

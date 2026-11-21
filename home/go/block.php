@@ -27,7 +27,7 @@ if ($Action=="Delete")
 {
 	include "access.php";
 	
-	SQL("DELETE FROM Block WHERE IP='$IP'");
+	SQL("DELETE FROM Block WHERE IP=?", [$IP]);
 
 	$Error=SSH ("sudo screen -d -m bash -c '/go/unblock $IP > /var/log/go/block/unblock-$IP-go-$Domain.log'",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 	echo Error("The following IP address is now able to access your site: $IP");
@@ -152,12 +152,12 @@ elseif ($_REQUEST['IP']!="")
 
 
 	$Table="Block";$Field="BlockID>=1";
-	$DefaultSortBy="BlockID";
+	$DefaultOrderBy="BlockID";
 	$DefaultDirection="DESC";
 	include "include/sql.php";
 
 	$X=0;
-	$Result = SQL($Sql);
+	$Result = SQL($SQL);
 	foreach ($Result as $Row)
 	{
 	

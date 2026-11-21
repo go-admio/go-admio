@@ -1,4 +1,5 @@
 <style>
+
 .quick-search-container {
     padding: 26px;
     background: var(--background-primary);
@@ -12,7 +13,7 @@
     width: 50%;
     min-width: 200px;
     background: var(--background-primary);
-    border: 1px solid #FF6A00;
+    border: 1px solid var(--border-tertiary);
     border-radius: 999px;
     transition: background 0.2s ease, box-shadow 0.2s ease;
 }
@@ -44,7 +45,7 @@
     transform: translateY(-50%);
     width: 36px;                     /* Slightly smaller to fit inside pill */
     height: 36px;
-    background: #FF6A00;
+    background: #37475A;
     border: none;
     border-radius: 50%;              /* Perfect circle */
     cursor: pointer;
@@ -57,7 +58,7 @@
 }
 
 .quick-search-button:hover {
-    background: #37475A;
+    background: #FF6A00;
 }
 
 .quick-search-button svg {

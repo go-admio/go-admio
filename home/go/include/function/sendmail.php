@@ -5,7 +5,7 @@ include_once "vendor/autoload.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-function SendMail($To,$Subject,$Message,$SenderName="",$From="",$ReplyTo="",$CopyToSent=0,$File="",$AsHTML=-1,$Auth=1,$Verify=0,$Charset="UTF-8")
+function SendMail($To,$Subject,$Message,$SenderName="",$RecipientName="",$From="",$ReplyTo="",$CopyToSent=0,$File="",$AsHTML=-1,$Auth=1,$Verify=0,$Charset="UTF-8")
 {
 	global $SMTPHost,$SMTPPort,$SMTPUser,$SMTPPass;
 	global $AlternativeSMTPHost,$AlternativeSMTPPort,$AlternativeSMTPUser,$AlternativeSMTPPass;
@@ -46,7 +46,14 @@ function SendMail($To,$Subject,$Message,$SenderName="",$From="",$ReplyTo="",$Cop
 		$mail->setFrom($From, $SenderName);
 		}
 		
-		$mail->addAddress($To);
+		if ($RecipientName!="")
+		{
+			$mail->addAddress($To,$RecipientName);
+		}
+		else
+		{
+			$mail->addAddress($To);
+		}
 
 		if ($ReplyTo!="")
 		{
@@ -183,7 +190,14 @@ function SendMail($To,$Subject,$Message,$SenderName="",$From="",$ReplyTo="",$Cop
 			$mail->setFrom($From, $SenderName);
 			}
 			
-			$mail->addAddress($To);
+			if ($RecipientName!="")
+			{
+				$mail->addAddress($To,$RecipientName);
+			}
+			else
+			{
+				$mail->addAddress($To);
+			}
 
 			if ($ReplyTo!="")
 			{

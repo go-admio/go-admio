@@ -1,6 +1,6 @@
 <?php
-
 include "nav.php";
+include "no.php";
 $Buttons="";
 include "title.php";
 
@@ -12,9 +12,9 @@ if ($_REQUEST['Domain']!="")
 	
 	include "access.php";
 	
-	SQL("UPDATE Site SET DocumentRoot='$DocumentRoot' where Domain='$Domain'");
+	SQL("UPDATE Site SET DocumentRoot=? where Domain=?", [$DocumentRoot, $Domain]);
 	
-	$Result = SQL("select PHPVersion from Site where Domain='$Domain'");
+	$Result = SQL("select PHPVersion from Site where Domain=?", [$Domain]);
 	foreach ($Result as $Row)
 	{
 		$PHPVersion=$Row['PHPVersion'];
@@ -36,33 +36,23 @@ foreach ($Result as $Row)
 	$Account['Username'][]=$Row['Username'];
 }
 
-if (is_array($Account['Domain']))
+array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
+
+$SelectDomain.="<select name='Domain' id='Domain' onchange=\"GetDocumentRoot()\" class=Select>";
+
+for ($E=0;$E<count($Account['Domain']);$E++)
 {
-	
-	array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
-	
-	$SelectDomain.="<select name='Domain' id='Domain' onchange=\"GetDocumentRoot()\" class=Select>";
-	
-	for ($E=0;$E<count($Account['Domain']);$E++)
+	if ($Account['Domain'][$E]==$_REQUEST['Domain'])
 	{
-		if ($Account['Domain'][$E]==$_REQUEST['Domain'])
-		{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
-		}
-		else
-		{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
-		}
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
 	}
-	
-	$SelectDomain.="</select>";
-	
+	else
+	{
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
+	}
 }
-else
-{
-	echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-	exit;
-}
+
+$SelectDomain.="</select>";
 
 $Content=DesignCode($Content,"$Control (Content)");
 echo $Content;

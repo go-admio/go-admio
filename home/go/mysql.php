@@ -186,7 +186,7 @@ exit;
 	{
 		$Readonly="readonly";
 	
-		$Result = SQL("select * from Mysql where MysqlID='$MysqlID'");
+		$Result = SQL("select * from Mysql where MysqlID=?", [$MysqlID]);
 		foreach ($Result as $Row)
 		{
 			$Domain=$Row['Domain'];
@@ -215,117 +215,81 @@ exit;
 		
 	}
 	
-	if (is_array($Account['Domain']))
+	array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
+	
+	$SelectDomain="<select name='Domain' id='Domain' class=Select onchange='MySQL()'>";
+	for ($E=0;$E<count($Account['Domain']);$E++)
 	{
-		array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
-		
-		$SelectDomain="<select name='Domain' id='Domain' class=Select onchange='MySQL()'>";
-		for ($E=0;$E<count($Account['Domain']);$E++)
+		if ($Account['Domain'][$E]==$_REQUEST['Domain'])
 		{
-			if ($Account['Domain'][$E]==$_REQUEST['Domain'])
-			{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
-			}
-			else
-			{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
-			}
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
 		}
-		
-		$SelectDomain.="</select>";
-
-		if ($Edit!=1)
+		else
 		{
-			$NameArray=explode(".",$Account['Domain'][0]);
-			$Name=str_replace("-","",$NameArray[0]);
-			$Name=ltrim($Name,"0123456789");
-			$Name="{$Name}_";
-
-			$User=$Name;
-		
-			if ($DomainCount==1)
-			{
-			$NamePattern="pattern=\"^{$Name}.*[^_]$\" title=\"Database Name must start with '{$Name}'\"";
-			$UserPattern="pattern=\"^{$User}.*[^_]$\" title=\"Database Username must start with '{$User}'\"";
-			}
-			else
-			{
-			$NamePattern="pattern=\"^.*[^_]$\"";
-			$UserPattern="pattern=\"^.*[^_]$\"";
-			}
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
 		}
-
-		$Content=DesignCode($Content,"$Control (Content)");
-		echo $Content;
-
 	}
-	else
+	
+	$SelectDomain.="</select>";
+
+	if ($Edit!=1)
 	{
+		$NameArray=explode(".",$Account['Domain'][0]);
+		$Name=str_replace("-","",$NameArray[0]);
+		$Name=ltrim($Name,"0123456789");
+		$Name="{$Name}_";
 
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-		exit;
+		$User=$Name;
+	
+		if ($DomainCount==1)
+		{
+		$NamePattern="pattern=\"^{$Name}.*[^_]$\" title=\"Database Name must start with '{$Name}'\"";
+		$UserPattern="pattern=\"^{$User}.*[^_]$\" title=\"Database Username must start with '{$User}'\"";
+		}
+		else
+		{
+		$NamePattern="pattern=\"^.*[^_]$\"";
+		$UserPattern="pattern=\"^.*[^_]$\"";
+		}
 	}
+
+	echo DesignCode($Content,"$Control (Content)");
+	
+
 		
-
-
-
 
 
 	if($Edit!=1)
 	{
-
 		include "search.php";
 				
-		$Header=DesignCode($Header,"$Control (Header)");
-		echo $Header;
-
+		echo DesignCode($Header,"$Control (Header)");
+		
 		$Table="Mysql";$Field="MysqlID>=1";
-		$DefaultSortBy="Name";
+		$DefaultOrderBy="Name";
 		$DefaultDirection="ASC";
 		include "include/sql.php";
 		
-
 		$X=0;		
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
-		{
-			
+		{			
+			if ($X%2==0) {$TDColor="Td";} else {$TDColor="TdB";}
 		
 			$MysqlID=$Row['MysqlID'];
 			$ID=$Row['MysqlID'];
 			
-			if ($X==0)
-			{
-			echo "<TBODY>";
-			}
-
-			if ($X%2==0)
-			{
-			$TDColor="Td";
-			}
-			else
-			{
-			$TDColor="TdB";
-			}
-			
 			$SerialNo=(($Page-1)*$PageNo)+($X+1);
-
 			$Size=FormatSize($Row['Size']);
-
 			$CreatedDate=date("D j M Y g:i a", $Row['TimeStamp']);
 
-
-
 			echo DesignCode($Loop,"$Control (Loop)");
-			
 			
 		$X++;
 		}
 				
 		$Footer=DesignCode($Footer,"$Control (Footer)");
 		echo $Footer;
-		
-		
 	}
 
 ?>

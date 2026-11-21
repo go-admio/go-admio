@@ -26,7 +26,7 @@ if (!in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsern
 	if ($Action!="")
 	{
 
-		$Result = SQL("select * from Extension where ExtensionID=$ExtensionID");
+		$Result = SQL("select * from Extension where ExtensionID=?", [$ExtensionID]);
 		foreach ($Result as $Row)
 		{
 		$Name=$Row["Name"];
@@ -62,12 +62,12 @@ if (!in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsern
 	echo $Header;	
 
 	$Table="Extension";$Field="ExtensionID>=1";
-	$DefaultSortBy="Extension";
+	$DefaultOrderBy="Extension";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 	
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$ExtensionID=$Row['ExtensionID'];

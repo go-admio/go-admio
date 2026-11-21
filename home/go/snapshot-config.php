@@ -19,12 +19,12 @@ if (!in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsern
 
 if ($Action=="EnableSnapshot")
 {
-	SQL("UPDATE Site SET Snapshot='1' where SiteID='$SiteID'");
+	SQL("UPDATE Site SET Snapshot='1' where SiteID=?", [$SiteID]);
 }
 
 if ($Action=="DisableSnapshot")
 {
-	SQL("UPDATE Site SET Snapshot='0' where SiteID='$SiteID'");
+	SQL("UPDATE Site SET Snapshot='0' where SiteID=?", [$SiteID]);
 }
 
 if ($_REQUEST['Cron']!="" or $_REQUEST['Destination']!="" or $_REQUEST['RemoteDir']!="")
@@ -484,19 +484,19 @@ Echo "
 <tr>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Snapshot')\">{$LNG['SnapshotStatus']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Snapshot')\">{$LNG['SnapshotStatus']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=SnapshotStamp')\">{$LNG['SnapshotDate']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=SnapshotStamp')\">{$LNG['SnapshotDate']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
 </TH>
 
 <TH width='20%'>
@@ -510,12 +510,12 @@ Echo "
 ";
 
 $Table="Site";$Field="Trash=0";
-$DefaultSortBy="Domain";
+$DefaultOrderBy="Domain";
 $DefaultDirection="ASC";
 include "include/sql.php";
 
 $X=0;
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	$SiteID=$Row['SiteID'];

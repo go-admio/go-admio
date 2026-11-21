@@ -22,7 +22,7 @@ include "access.php";
 
 	if ($Action=="Enable")
 	{
-		SQL("UPDATE Site set FPM='1' where Domain='$Domain'");
+		SQL("UPDATE Site set FPM='1' where Domain=?", [$Domain]);
 	
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		echo Error("PHP FPM has been enabled for Domain $Domain");
@@ -30,7 +30,7 @@ include "access.php";
 	else
 	{
 	
-		SQL("UPDATE Site set FPM='0' where Domain='$Domain'");
+		SQL("UPDATE Site set FPM='0' where Domain=?", [$Domain]);
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		echo Error("PHP FPM has been disabled for Domain $Domain");
 	}
@@ -54,7 +54,7 @@ include "access.php";
 	<tr>
 	
     <TH align='$DAlign' width='90%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH width='10%'>
@@ -68,12 +68,12 @@ include "access.php";
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

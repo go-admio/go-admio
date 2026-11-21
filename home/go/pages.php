@@ -18,7 +18,7 @@ if ($MaxPage>=2)
 	$NewFromPage=$FromPage+$PageBarNo;
 	if ($NewFromPage<=$MaxPage)
 	{
-		$PageLink="$CurrentFileName?Page=$NewFromPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&SortBy=$SortBy&FromPage=$NewFromPage&$Parameters";
+		$PageLink="$CurrentFileName?Page=$NewFromPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&OrderBy=$OrderBy&FromPage=$NewFromPage&$Parameters";
 		$NextPage="<a href=\"javascript:Load('$PageLink')\"><div class=Pages>Next</div></a>";
 	}	    	
 
@@ -27,7 +27,7 @@ if ($MaxPage>=2)
 		$NewPrevFromPage=$NewFromPage-($PageBarNo*2);
 		if ($NewPrevFromPage<1) {$NewPrevFromPage=1;}
 
-		$PageLink="$CurrentFileName?Page=$NewPrevFromPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&SortBy=$SortBy&FromPage=$NewPrevFromPage&$Parameters";
+		$PageLink="$CurrentFileName?Page=$NewPrevFromPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&OrderBy=$OrderBy&FromPage=$NewPrevFromPage&$Parameters";
 		$PrevPage="<a href=\"javascript:Load('$PageLink')\"><div class=Pages>Prev</div></a>";
 		
 	}
@@ -49,17 +49,17 @@ if ($MaxPage>=2)
 		Else
 		{
 			
-			$PageLink="$CurrentFileName?Page=$i&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&SortBy=$SortBy&Direction=$Direction&FromPage=$FromPage&$Parameters";
+			$PageLink="$CurrentFileName?Page=$i&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&OrderBy=$OrderBy&Direction=$Direction&FromPage=$FromPage&$Parameters";
 			Echo "<a href=\"javascript:Load('$PageLink')\"><div class=Pages>$i</div></a>";
 		}
 	}
 
 	$FromPage=$MaxPage-$PageNo; if ($FromPage<1) {$FromPage=1;}
 	$ToPage=$MaxPage;
-	$PageLink="$CurrentFileName?Page=1&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&SortBy=$SortBy&FromPage=1&$Parameters";
+	$PageLink="$CurrentFileName?Page=1&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&OrderBy=$OrderBy&FromPage=1&$Parameters";
 	Echo "<a href=\"javascript:Load('$PageLink')\"><div class=Pages>&lt</div></a>";
 	
-	$PageLink="$CurrentFileName?Page=$MaxPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&SortBy=$SortBy&Direction=$Direction&FromPage=$FromPage&$Parameters";
+	$PageLink="$CurrentFileName?Page=$MaxPage&SearchFor=$SearchFor&Service=$Service&FilterSql=$FilterSql&OrderBy=$OrderBy&Direction=$Direction&FromPage=$FromPage&$Parameters";
 	echo "<a href=\"javascript:Load('$PageLink')\"><div class=Pages>&gt</div></a>";
 
 	Echo "$PrevPage";

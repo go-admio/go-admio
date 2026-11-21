@@ -90,9 +90,9 @@ if ($Action=="Delete")
 	
 	$SortDir="ASC";
 
-    if ($SortBy=="")
+    if ($OrderBy=="")
     {
-    $SortBy="Domain";
+    $OrderBy="Domain";
     }
 
     if ($Page=="")

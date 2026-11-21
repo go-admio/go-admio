@@ -59,13 +59,13 @@ if (class_exists(GoogleAuthenticator::class))
 		exit;
 	}
 	
-	$Result = SQL("select Username from Site where Username='$Username'");
+	$Result = SQL("select Username from Site where Username=?", [$Username]);
 	foreach ($Result as $Row)
 	{
 	$SiteExists=1;
 	}
 	
-	$Result = SQL("select * from Auth where AuthUser='$Username'");
+	$Result = SQL("select * from Auth where AuthUser=?", [$Username]);
 	foreach ($Result as $Row)
 	{
 	$AuthUser=$Row['AuthUser'];
@@ -97,10 +97,11 @@ if (class_exists(GoogleAuthenticator::class))
 
 		if (CheckPassword($Username,$Password))
 		{
-			SQL("UPDATE User SET Username='$Username',Password='".md5($Password)."' where UserID=1");
+			SQL("UPDATE User SET Username=?,Password=? where UserID=1", [$Username, md5($Password)]);
 			
 			$Result = SQL("select * from User where UserID=1");
-			foreach ($Result as $Row) {
+			foreach ($Result as $Row) 
+			{
 				$Success = 1;
 				
 				$_SESSION['SessionType'] = "Root";
@@ -112,21 +113,21 @@ if (class_exists(GoogleAuthenticator::class))
 				$_SESSION['SessionUserID'] = $Row['UserID'];
 				$_SESSION['SessionUsername'] = $Row['Username'];
 				$_SESSION['SessionSwitchUsername'] = $Row['Username'];
-				$_SESSION['SessionFullName'] = $Row['FullName'];
-				
 				$_SESSION['SessionPassword'] = $Password;
 				$_SESSION['SessionSwitchPassword'] = $Password;
 				
 				$_SESSION['SessionLng'] = $_REQUEST['SessionLng'];
 				
-				if ($_REQUEST['SessionTheme'] == "light") {
+				if ($_REQUEST['SessionTheme'] == "light") 
+				{
 					$_SESSION['SessionTheme'] = "light";
-				} else {
+				} 
+				else 
+				{
 					$_SESSION['SessionTheme'] = "dark";
 				}
 				
 				$_SESSION['SessionAdminView'] = $_REQUEST['SessionAdminView'];
-				$_SESSION['SessionUserGroup'] = $Row['UserGroup'];
 				
 				setcookie("CookiesUsername", $Row['Username'], time()+31104000, "/");
 				
@@ -148,14 +149,14 @@ if (class_exists(GoogleAuthenticator::class))
 		{
 		
 			$Password=md5($Password);
-			SQL("UPDATE Site SET Password='$Password' where Username='$Username'");
+			SQL("UPDATE Site SET Password=? where Username=?", [$Password, $Username]);
 		
-			$Result=SQL("select * from Site where Username='$Username'");
+			$Result=SQL("select * from Site where Username=?", [$Username]);
 			foreach ($Result as $Row)
 			{
 				$Success=1;
 
-				$ResultQ=SQL("select ControlFile from Package where PackageID='{$Row['PackageID']}'");
+				$ResultQ=SQL("select ControlFile from Package where PackageID=?", [$Row['PackageID'] ?? 0]);
 				foreach ($ResultQ as $RowQ)
 				{
 				$_SESSION['SessionControlFile']=$RowQ['ControlFile'];
@@ -171,9 +172,7 @@ if (class_exists(GoogleAuthenticator::class))
 				
 				$_SESSION['SessionPassword']=$Row['Password'];
 				$_SESSION['SessionSalt']=$Row['Salt'];
-				
-				$_SESSION['SessionUserGroup']=5;
-				
+								
 				$_SESSION['SessionLng']=$_REQUEST['SessionLng'];
 				$_SESSION['SessionTheme']=$_REQUEST['SessionTheme'];
 				$_SESSION['SessionAdminView']=$_REQUEST['SessionAdminView'];
@@ -187,53 +186,38 @@ if (class_exists(GoogleAuthenticator::class))
 	}
 	else
 	{
-	
-		if (StartsWith(getcwd(),"/usr/local/goadmio"))
+
+		$Password=md5($Password);
+		$Result = SQL("select * from User where Username=? and Password=?", [$Username, $Password]);
+		foreach ($Result as $Row)
 		{
-		// Reseller
-	
-			$Password=md5($Password);
-			$Result = SQL("select * from User where Username='$Username' and Password='$Password'");
-			foreach ($Result as $Row)
-			{
 
-				$Success=1;
-				
-				$_SESSION['SessionType']="Reseller";
-				$_SESSION['SkipContact']=1;
-				
-				$SessionAdminDomain=$_SERVER['HTTP_HOST'];
-				$SessionAdminDomain=str_replace("www.","",$SessionAdminDomain);
-				
-				$_SESSION['SessionUserID']=$Row['UserID'];
-				$_SESSION['SessionUsername']=$Row['Username'];
-				$_SESSION['SessionSwitchUsername']=$Row['Username'];
-				$_SESSION['SessionFullName']=$Row['FullName'];
-				$_SESSION['SessionSubReseller']=$Row['SubReseller'];
-				
-				$_SESSION['SessionUserGroup']=$Row['UserGroup'];
-				
-				$_SESSION['SessionResellerUsername']=$Row['Username'];
-
-				$_SESSION['SessionPassword']=$Password;
-				$_SESSION['SessionResellerPassword']=$Password;
-				
-				$_SESSION['SessionLng']=$_REQUEST['SessionLng'];
-				$_SESSION['SessionTheme']=$_REQUEST['SessionTheme'];
-				$_SESSION['SessionAdminView']=$_REQUEST['SessionAdminView'];
-				
-				setcookie ("CookiesUsername",$Row['Username'],time()+31104000,"/");
-				
-
+			$Success=1;
 			
-				
-			}
+			$_SESSION['SessionType']="Reseller";
+			$_SESSION['SkipContact']=1;
 			
-
+			$SessionAdminDomain=$_SERVER['HTTP_HOST'];
+			$SessionAdminDomain=str_replace("www.","",$SessionAdminDomain);
+			
+			$_SESSION['SessionUserID']=$Row['UserID'];
+			$_SESSION['SessionUsername']=$Row['Username'];
+			$_SESSION['SessionPassword']=$Password;
+			$_SESSION['SessionSwitchUsername']=$Row['Username'];
+			$_SESSION['SessionSubReseller']=$Row['SubReseller'];				
+			$_SESSION['SessionResellerUsername']=$Row['Username'];
+			
+			$_SESSION['SessionResellerPassword']=$Password;
+			
+			$_SESSION['SessionLng']=$_REQUEST['SessionLng'];
+			$_SESSION['SessionTheme']=$_REQUEST['SessionTheme'];
+			$_SESSION['SessionAdminView']=$_REQUEST['SessionAdminView'];
+			
+			setcookie ("CookiesUsername",$Row['Username'],time()+31104000,"/");
+			
 		}
 		
 	}
-	
 	
 	If ($Success!=1)
 	{

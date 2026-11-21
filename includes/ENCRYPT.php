@@ -1,5 +1,0 @@
-<?php
-
-eval("?> $DesignCode <?php "); 
-
-?>

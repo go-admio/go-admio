@@ -22,7 +22,7 @@ $Password=trim($_REQUEST['Password']);
 $DirectoryArray=explode("/",$Directory);
 $Domain=$DirectoryArray[2];
 
-$Result = SQL("select Username from Site where Domain='$Domain'");
+$Result = SQL("select Username from Site where Domain=?", [$Domain]);
 foreach ($Result as $Row)
 {
 $Username=$Row['Username'];
@@ -93,12 +93,12 @@ $Header=DesignCode($Header,"$Control (Header)");
 echo $Header;
 
 $Table="Directory";$Field="DirectoryID>=1";
-$DefaultSortBy="Directory";
+$DefaultOrderBy="Directory";
 $DefaultDirection="ASC";
 include "include/sql.php";
 
 $X=0;		
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	

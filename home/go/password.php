@@ -63,7 +63,7 @@ include "access.php";
 		<div class='DivInput {$Dir}DivInput'>
 		{$LNG['NewPassword']}
 		<br>
-		<input type='password' name='Password' id='Password' pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$' title='Must contain at least one number, one uppercase letter, one lowercase letter, and be at least 8 characters long' autocomplete='new-password' required maxlength=100 class=InputText> <span onclick=\"GeneratePassword('Password')\" style='cursor:pointer'>Generate Password</span>
+		<input type='password' name='Password' id='Password' pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$' title='Must contain at least one number, one uppercase letter, one lowercase letter, and be at least 8 characters long' autocomplete='new-password' required maxlength=100 class=InputText> <span onclick=\"GeneratePassword('Password')\" style='color: var(--blue);cursor:pointer'>Generate Password</span>
 		</div>
 
 		
@@ -85,7 +85,7 @@ include "access.php";
 	}
 	else
 	{
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
+		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateAccount']}</a>");
 		exit;
 	}
 

@@ -7,7 +7,7 @@ include("include/function/function.php");
 include "/usr/local/goadmio/include/config/config.php";
 
 $Page=$_REQUEST['Page'];
-$SortBy=$_REQUEST['SortBy'];
+$OrderBy=$_REQUEST['OrderBy'];
 $SortDir=$_REQUEST['SortDir'];
 $Direction=$_REQUEST['Direction'];
 $SearchFor=$_REQUEST['SearchFor'];
@@ -68,11 +68,11 @@ foreach ($Result as $Row)
 	{
 		if ($_SESSION['SessionType']=="Website")
 		{
-		SQL("UPDATE Control SET UClick=UClick+1 where ControlID='$ControlID'");
+			SQL("UPDATE Control SET UClick=UClick+1 where ControlID=?", [$ControlID]);
 		}
 		else
 		{
-		SQL("UPDATE Control SET RClick=RClick+1 where ControlID='$ControlID'");
+			SQL("UPDATE Control SET RClick=RClick+1 where ControlID=?", [$ControlID]);
 		}
 	}
 
@@ -86,12 +86,8 @@ echo "
 	$Navigator['Name'][0]=$LNG['Tools'];
 	$Navigator['URL'][0]="";
 		
-	echo "
-	<span class='NavigatorLink {$Dir}NavigatorLink'>{$Navigator['Name'][0]}</span>
-	";
-	
-	
-	
+	echo "<span class='NavigatorLink {$Dir}NavigatorLink'>{$Navigator['Name'][0]}</span>";
+
 	}
 	elseif ($CurrentFileName=="category.php")
 	{
@@ -99,7 +95,7 @@ echo "
 
 		$ControlMenu=trim($_REQUEST['ControlMenu']);
 
-		$Result = SQL("select * from Control where ControlMenu='$ControlMenu'");
+		$Result = SQL("select * from Control where ControlMenu=?", [$ControlMenu]);
 		foreach ($Result as $Row)
 		{
 		$ControlMenu=$Row['ControlMenu'];
@@ -113,12 +109,7 @@ echo "
 	$Navigator['URL'][1]="";
 
 
-	echo "
-	<a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][0]}'>{$Navigator['Name'][0]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;</span>
-
-	<span class='NavigatorLink {$Dir}NavigatorLink'>{$Navigator['Name'][1]}</span>
-	";
-
+	echo "<a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][0]}'>{$Navigator['Name'][0]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;</span><span class='NavigatorLink {$Dir}NavigatorLink'>{$Navigator['Name'][1]}</span>";
 
 	}
 	else
@@ -127,7 +118,7 @@ echo "
 	
 		if ($ControlID>=1)
 		{
-			$Result = SQL("select * from Control where ControlID='$ControlID'");
+			$Result = SQL("select * from Control where ControlID=?", [$ControlID]);
 			foreach ($Result as $Row)
 			{
 				$Service=$Row['Service'];
@@ -140,7 +131,7 @@ echo "
 		}
 		else
 		{
-			$Result = SQL("select * from Control where ControlUrl like '$CurrentFileName%'");
+			$Result = SQL("select * from Control where ControlUrl like ?", [$CurrentFileName.'%']);
 			foreach ($Result as $Row)
 			{
 				$Service=$Row['Service'];
@@ -172,12 +163,7 @@ echo "
 	$Navigator['Name'][2]=$Control;
 	$Navigator['URL'][2]="";
 
-	echo "
-	<a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][0]}'>{$Navigator['Name'][0]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;</span>
-
-	<a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][1]}'>{$Navigator['Name'][1]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;{$Navigator['Name'][2]}</span>
-	";
-
+	echo "<a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][0]}'>{$Navigator['Name'][0]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;</span><a class='NavigatorLink {$Dir}NavigatorLink' href='{$Navigator['URL'][1]}'>{$Navigator['Name'][1]}</a><span class='NavigatorLink {$Dir}NavigatorLink'>&nbsp;&raquo;&nbsp;{$Navigator['Name'][2]}</span>";
 
 	}
 
@@ -236,7 +222,7 @@ elseif ($_SESSION['SessionType']=="Website")
 {
 
 	// Addon Domains
-	$Result = SQL("select * from Site where Domain='{$_SESSION['SessionDomain']}' or Owner='{$_SESSION['SessionDomain']}'");
+	$Result = SQL("select * from Site where Domain=? or Owner=?", [$_SESSION['SessionDomain'], $_SESSION['SessionDomain']]);
 	foreach ($Result as $Row)
 	{
 		if ($Owner=="")
@@ -267,7 +253,7 @@ elseif ($_SESSION['SessionType']=="Website")
 elseif ($_SESSION['SessionType']=="Reseller")
 {
 	// Reseller
-	$Result = SQL("select * from Site where UserID='{$_SESSION['SessionUserID']}'");
+	$Result = SQL("select * from Site where UserID=?", [$_SESSION['SessionUserID']]);
 	foreach ($Result as $Row)
 	{
 		if ($Owner=="")

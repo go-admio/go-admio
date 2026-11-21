@@ -9,7 +9,7 @@ if (!StartsWith(getcwd(),"/usr/local/goadmio"))
 	exit;
 }
 
-$SortBy=$_REQUEST['SortBy'];
+$OrderBy=$_REQUEST['OrderBy'];
 $Step=$_REQUEST['Step'];
 $Delete=$_REQUEST['Delete'];
 $Action=$_REQUEST['Action'];
@@ -71,12 +71,12 @@ $Header=DesignCode($Header,"$Control (Header)");
 echo $Header;
 
 $Table="Site";$Field="Trash=0";
-$DefaultSortBy="Domain";
+$DefaultOrderBy="Domain";
 $DefaultDirection="ASC";
 include "include/sql.php";    
 
 $X=0;
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	$SiteID=$Row['SiteID'];

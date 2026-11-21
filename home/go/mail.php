@@ -28,7 +28,7 @@ $Date=date ("Y-m-d");
 if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsername], true))
 {
 	$LogTimeStamp=time()-86400;
-	$Result = SQL("select * from Log where Keyword='Outbound SPAM' and TimeStamp>$LogTimeStamp ORDER BY TimeStamp DESC LIMIT 1");
+	$Result = SQL("select * from Log where Keyword='Outbound SPAM' and TimeStamp>? ORDER BY TimeStamp DESC LIMIT 1", [$LogTimeStamp]);
 	foreach ($Result as $Row)
 	{
 		$Subject=$Row['Subject'];
@@ -36,20 +36,20 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 	
 	if ($Subject!="")
 	{
-	echo "<div class=NavigatorInfo><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>$Subject</div>";
+	echo "<div class='NavigatorInfo No'><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>$Subject</div>";
 	}
 	elseif (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') 
 	{	
-	echo "<div class=NavigatorInfo><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='https://$WebmailDomain:2025' target='_blank'>https://$WebmailDomain:2025</a></div>";
+	echo "<div class='NavigatorInfo No'><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='https://$WebmailDomain:2025' target='_blank'>https://$WebmailDomain:2025</a></div>";
 	}
 	else
 	{
-	echo "<div class=NavigatorInfo><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='http://$IPv4:2024' target='_blank'>http://$IPv4:2024</a></div>";	
+	echo "<div class='NavigatorInfo No'><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='http://$IPv4:2024' target='_blank'>http://$IPv4:2024</a></div>";	
 	}
 }
 else
 {	
-echo "<div class=NavigatorInfo><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='https://webmail.{$_SESSION['SessionDomain']}' target='_blank'>https://webmail.{$_SESSION['SessionDomain']}</a></div>";
+echo "<div class='NavigatorInfo No'><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['AccessWebmailDirectly']} <a href='https://webmail.{$_SESSION['SessionDomain']}' target='_blank'>https://webmail.{$_SESSION['SessionDomain']}</a></div>";
 }
 
 $Domain=ValidateDomain($_REQUEST['Domain']);
@@ -72,8 +72,7 @@ If ($Action=="Config")
 {
 	include "access.php";
 
-	$Sql = "select * from Mail where Email='$Email'";
-	$Result = SQL($Sql);
+	$Result = SQL("select * from Mail where Email=?", [$Email]);
 	foreach ($Result as $Row)
 	{ 
 		$Domain=$Row['Domain'];
@@ -187,13 +186,13 @@ If ($Action=="List")
 		
 		if ($_SESSION['SessionType']=="Root")
 		{
-		$Sql = "select * from Mail ORDER BY Email";
+		$SQL="select * from Mail ORDER BY Email";
 		}
 		elseif ($_SESSION['SessionType']=="Website")
 		{
-		$Sql = "select * from Mail where Domain='{$_SESSION['SessionDomain']}' ORDER BY Email";
+		$SQL="select * from Mail where Domain='{$_SESSION['SessionDomain']}' ORDER BY Email";
 		}
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{ 
 			$Email=$Row['Email'];
@@ -298,11 +297,11 @@ if ($Action=="Admin")
 
 	if ($_REQUEST['Admin']=="1")
 	{
-		SQL("update Mail set Admin=0 where Email='$Email'");	
+		SQL("update Mail set Admin=0 where Email=?", [$Email]);	
 	}
 	else
 	{
-		SQL("update Mail set Admin=1 where Email='$Email'");
+		SQL("update Mail set Admin=1 where Email=?", [$Email]);
 	}
 
 }
@@ -407,7 +406,7 @@ if ($_REQUEST['User']!="")
 
 	if ($DemoPassword!="") {echo Error($LNG['ThisFunctionalityNotAvailableDemoMode']);echo Error("<a href=\"javascript:Load('$CurrentFileName')\"><img src='theme/{$_SESSION['SessionTheme']}/image/back.svg' height=24 style='padding-right:8px;vertical-align:middle'>Go Back</a>");exit;}
 
-	$Result = SQL("select Domain,EmailNo from Site where Domain='$Domain'");
+	$Result = SQL("select Domain,EmailNo from Site where Domain=?", [$Domain]);
 	foreach ($Result as $Row)
 	{
 		$Domain=$Row['Domain'];
@@ -456,8 +455,7 @@ if ($_REQUEST['User']!="")
 	$Pass="";
 	if ($Edit==1)
 	{
-		$Sql = "select * from Mail where Email='$Email'";
-		$Result = SQL($Sql);
+		$Result = SQL("select * from Mail where Email=?", [$Email]);
 		foreach ($Result as $Row)
 		{ 
 			$EmailArray=explode("@",$Row['Email']);
@@ -482,32 +480,24 @@ if ($_REQUEST['User']!="")
 	$Account['Username'][]=$Row['Username'];
 	}
 	
-	if (is_array($Account['Domain']))
-	{
-		array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
-	
+	array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
 
-		$SelectDomain.="<select name='Domain' id='Domain' class=Select style='width:24%'>";
-		for ($E=0;$E<count($Account['Domain']);$E++)
+	$SelectDomain.="<select name='Domain' id='Domain' class=Select style='width:24%'>";
+	for ($E=0;$E<count($Account['Domain']);$E++)
+	{
+		if ($Account['Domain'][$E]==$_REQUEST['Domain'])
 		{
-			if ($Account['Domain'][$E]==$_REQUEST['Domain'])
-			{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
-			}
-			else
-			{
-			$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
-			}
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}' selected>{$Account['Domain'][$E]}</option>";
 		}
-
-		$SelectDomain.="</select>";
-
+		else
+		{
+		$SelectDomain.="<option value='{$Account['Domain'][$E]}'>{$Account['Domain'][$E]}</option>";
+		}
 	}
-	else
-	{
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-		exit;
-	}
+
+	$SelectDomain.="</select>";
+
+
 
 	$Content=DesignCode($Content,"$Control (Content)");
 	echo $Content;
@@ -522,11 +512,11 @@ if ($_REQUEST['User']!="")
 		echo $Header;
 
 		$Table="Mail";$Field="Trash=0";
-		$DefaultSortBy="Email";
+		$DefaultOrderBy="Email";
 		$DefaultDirection="ASC";
 		include "include/sql.php";
 		
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{
 		

@@ -6,7 +6,7 @@ include "title.php";
 $DDosID=intval($_REQUEST['DDosID']);
 $CheckList=$_REQUEST['CheckList'];
 
-if ($_SESSION['SessionSSHUsername']!="root")
+if ($_SESSION['SessionType']!="Root")
 {
 
 	
@@ -61,24 +61,24 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	<tr>
 	
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=IP')\">{$LNG['IP']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=IP')\">{$LNG['IP']}</a>
     </TH>
 	
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Country')\">{$LNG['Country']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Country')\">{$LNG['Country']}</a>
     </TH>
 
     <TH align='$DAlign' width='10%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=VisitorNo')\">{$LNG['VisitorNo']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=VisitorNo')\">{$LNG['VisitorNo']}</a>
     </TH>
 
 
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Browser')\">{$LNG['Browser']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Browser')\">{$LNG['Browser']}</a>
     </TH>
 
     <TH align='$DAlign' width='40%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=UserAgent')\">{$LNG['UserAgent']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=UserAgent')\">{$LNG['UserAgent']}</a>
     </TH>
 
     <TH width='5%'>
@@ -92,13 +92,13 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	";
 	
 	$Table="DDos";$Field="IP!='127.0.0.1' and IP!='$IPv4'";
-	$DefaultSortBy="VisitorNo";
+	$DefaultOrderBy="VisitorNo";
 	$DefaultDirection="DESC";
 	include "include/sql.php";
 	
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$DDosID=$Row['DDosID'];

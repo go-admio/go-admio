@@ -49,11 +49,11 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	<tr>
 	
     <TH align='$DAlign' width='35%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='35%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=ZoneID')\">{$LNG['ZoneID']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=ZoneID')\">{$LNG['ZoneID']}</a>
     </TH>
 	
 
@@ -68,12 +68,12 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
     
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

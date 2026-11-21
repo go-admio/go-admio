@@ -38,11 +38,11 @@ include "access.php";
 	<tr>
 	
     <TH align='$DAlign' width='60%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Proxy')\">{$LNG['ProxyStatus']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Proxy')\">{$LNG['ProxyStatus']}</a>
     </TH>
 	
     <TH width='20%'>
@@ -56,12 +56,12 @@ include "access.php";
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

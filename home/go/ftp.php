@@ -75,8 +75,7 @@ else
 	$Pass="";
 	if ($Edit==1)
 	{
-		$Sql = "select * from Ftp where User='$User'";
-		$Result=SQL($Sql);
+		$Result=SQL("select * from Ftp where User=?", [$User]);
 		foreach ($Result as $Row)
 		{
 
@@ -88,8 +87,7 @@ else
 
 		}
 		
-		$Sql = "select Domain from Site where Domain='$Domain'";
-		$Result=SQL($Sql);
+		$Result=SQL("select Domain from Site where Domain=?", [$Domain]);
 		foreach ($Result as $Row)
 		{
 		$Domain=$Row['Domain'];
@@ -186,7 +184,7 @@ else
 	</div>
 
 	<div class='DivInput {$Dir}DivInput'>{$LNG['FTPPassword']}<br>
-	<input type='password' name='Pass' id='Password' autocomplete='new-password' required maxlength=100 class=InputText> <span onclick=\"GeneratePassword('Password')\" style='cursor:pointer'>Generate Password</span>
+	<input type='password' name='Pass' id='Password' autocomplete='new-password' required maxlength=100 class=InputText> <span onclick=\"GeneratePassword('Password')\" style='color: var(--blue);cursor:pointer'>Generate Password</span>
 	</div>
 
 	<div id=DivSubmit class=DivSubmit>
@@ -243,13 +241,13 @@ else
 		";
 
 		$Table="Ftp";$Field="FtpID>=1";
-		$DefaultSortBy="User";
+		$DefaultOrderBy="User";
 		$DefaultDirection="ASC";
 		include "include/sql.php";
 		
 
 		$X=0;
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{
 		$Domain=$Row['Domain'];

@@ -15,17 +15,14 @@ include "access.php";
 
 	if ($Action=="Enable")
 	{
-		SQL("UPDATE Site set Bot='1' where Domain='$Domain'");
-	
+		SQL("UPDATE Site set Bot='1' where Domain=?", [$Domain]);	
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		$Error=SSH ("/usr/bin/sudo /go/nginx $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		
 	}
 	else
 	{
-	
-		SQL("UPDATE Site set Bot='0' where Domain='$Domain'");
-	
+		SQL("UPDATE Site set Bot='0' where Domain=?", [$Domain]);	
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		$Error=SSH ("/usr/bin/sudo /go/nginx $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		
@@ -50,15 +47,15 @@ include "access.php";
 	<tr>
 	
     <TH align='$DAlign' width='60%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Bot')\">{$LNG['Blocked']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Bot')\">{$LNG['Blocked']}</a>
     </TH>
 	
     <TH width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Bot&Direction=DESC')\">{$LNG['Action']}</a> 
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Bot&Direction=DESC')\">{$LNG['Action']}</a> 
     </TH>
 	
 	</tr>
@@ -68,12 +65,12 @@ include "access.php";
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

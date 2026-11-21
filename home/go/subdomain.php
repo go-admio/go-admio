@@ -43,8 +43,7 @@ if ($_REQUEST['Directory']!="")
 	$Domain=ValidateDomain($_REQUEST['Domain']);
 	$Domain=strtolower($Domain);
 
-	$Sql = "select SubDomainNo,Username from Site where Domain='$Domain'";
-	$Result = SQL($Sql);
+	$Result = SQL("select SubDomainNo,Username from Site where Domain=?", [$Domain]);
 	foreach ($Result as $Row)
 	{
 
@@ -80,7 +79,7 @@ if ($_REQUEST['Directory']!="")
 	if ($Edit==1)
 	{
 
-		$Result = SQL("select * from Subdomain where SubdomainID='$SubdomainID'");
+		$Result = SQL("select * from Subdomain where SubdomainID=?", [$SubdomainID]);
 		foreach ($Result as $Row)
 		{
 		$Username=$Row['Username'];
@@ -96,23 +95,14 @@ if ($_REQUEST['Directory']!="")
 	}
 
 	unset($Domains);
-	$Sql = "select * from Site where Trash=0 $SearchSql";
-	$Result = SQL($Sql);
+	$Result = SQL("select * from Site where Trash=0 $SearchSql");
 	foreach ($Result as $Row)
 	{
 	$Domains[]=$Row['Domain'];
 	}
 	
-	if (is_array($Domains))
-	{
-		sort($Domains);
-	}
-	else
-	{
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-		exit;
-	}
-
+	sort($Domains);
+	
 	Echo "
 	<form name=\"Form\" method=\"POST\" onsubmit=\"return Submit('$CurrentFileName');\" autocomplete=\"off\" action=\"$CurrentFileName\">
 	<input type=hidden name=Edit value='$Edit'>
@@ -216,12 +206,12 @@ if ($_REQUEST['Directory']!="")
 		";
 		
 		$Table="Subdomain";$Field="SubdomainID>=1";
-		$DefaultSortBy="Subdomain";
+		$DefaultOrderBy="Subdomain";
 		$DefaultDirection="ASC";
 		include "include/sql.php";
 
 		$X=0;
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{
 		

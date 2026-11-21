@@ -50,23 +50,23 @@ include "access.php";
 	<tr>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=FTPStatus')\">{$LNG['Status']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=FTPStatus')\">{$LNG['Status']}</a>
     </TH>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=FTPUpload')\">{$LNG['Upload']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=FTPUpload')\">{$LNG['Upload']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=FTPDownload')\">{$LNG['Download']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=FTPDownload')\">{$LNG['Download']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=FTPDelete')\">{$LNG['Delete']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=FTPDelete')\">{$LNG['Delete']}</a>
     </TH>
 	
 	</tr>
@@ -76,12 +76,12 @@ include "access.php";
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

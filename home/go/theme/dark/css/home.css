@@ -1,126 +1,111 @@
 :root {
     /* ========== BACKGROUNDS ========== */
-    --background-primary: #000000;
-    --background-secondary: #000000;        /* unified to pure black for max contrast */
-    --background-tertiary: #1A1A1A;          /* subtle difference but still ≥7:1 with text */
-    --background-tertiary-hover: #2A2A2A;
-    
-    /* Window & surface backgrounds */
-    --window-background: #000000;
-    --window-background-active: #000000;
-    --window-background-inactive: #000000;
-    --under-page-background: #000000;
-    --grouped-background: #000000;
-    --grouped-background-secondary: #0D0D0D;
-    --non-emphasized-window-background: #0D0D0D;
-    --sheet-background: #0D0D0D;
-    
-    /* ========== HEADER ========== */
-    --header-background: #0D0D0D;
-    --header-border-color: #FFFFFF;         /* solid white border */
-    --header-text-color: #FFFFFF;
-    --header-link-color: #FFFFFF;
-    --header-link-hover: #FFD60A;           /* bright yellow for hover */
-    --header-logo-color: #FFD60A;
-    --header-icon-color: #FFFFFF;
-    --header-icon-hover: #FFD60A;
-    
-    /* ========== FOOTER ========== */
-    --footer-background: #0D0D0D;
-    --footer-border-color: #FFFFFF;
-    --footer-text-color: #FFFFFF;
-    --footer-link-color: #FFFFFF;
-    --footer-pipe-color: #FFFFFF;
-    --footer-directory-title-color: #FFFFFF;
-    --footer-directory-title-color-hover: #FFD60A;
-    
-    /* ========== LOGO ========== */
-    --background-logo: #FFD60A;
-    --background-logo-hover: #FFB800;
-	--background-icon: #404040;
-	--background-menu-hover: #404040;
-    
-    /* ========== TEXT / LABELS (HIG CONTRAST) ========== */
-    --text-primary: #FFFFFF;
-    --text-secondary: #FFFFFF;              /* all primary text pure white */
-    --text-tertiary: #FFFFFF;
-    --text-quaternary: #CCCCCC;              /* only for low-emphasis but still legible */
-    --text-quinary: #FFD60A;                 /* accent for links */
-    
-    /* Semantic Labels */
-    --label-primary: #FFFFFF;
-    --label-secondary: #CCCCCC;              /* contrast 13:1 on #000 */
-    --label-tertiary: #AAAAAA;               /* contrast 9:1 – meets AAA */
-    --label-quaternary: #888888;             /* contrast 5.5:1 – still AA */
-    --label-disabled: #888888;
-    --placeholder-text: #AAAAAA;             /* improved from #636366 */
-    
-    /* Selected/highlighted text */
-    --selected-text-background: #FFD60A;     /* yellow instead of blue for high contrast */
-    --selected-text-color: #000000;
-    --unemphasized-selected-text: #000000;
-    --unemphasized-selected-text-background: #CCCCCC;
-    --selected-text-background-inactive: #666666;
-    --selected-content-background: #FFD60A;
-    
-    /* Find/search highlight */
-    --find-highlight: #FFD60A;
-    --find-highlight-stroke: #FFB800;
-    
-    /* ========== FILLS (solid, no transparency) ========== */
-    --fill-primary: #2A2A2A;
-    --fill-secondary: #222222;
-    --fill-tertiary: #1A1A1A;
-    --fill-quaternary: #111111;
-    --fill-quinary: #0A0A0A;
-    
-    /* ========== CONTROLS ========== */
-    --control-background: #2A2A2A;
-    --control-background-disabled: #111111;
-    --control-text-disabled: #888888;
-    --control-border-focus: #FFD60A;
+    --background-primary: #0d1117;
+    --background-secondary: #0d1117;
+    --background-tertiary: #161b22;
+    --background-tertiary-hover: #21262d;
+
+    --window-background: #0d1117;
+    --window-background-active: #0d1117;
+    --window-background-inactive: #0d1117;
+    --under-page-background: #0d1117;
+    --grouped-background: #0d1117;
+    --grouped-background-secondary: #161b22;
+    --non-emphasized-window-background: #161b22;
+    --sheet-background: #161b22;
+
+    --header-background: #161b22;
+    --header-border-color: #30363d;
+    --header-text-color: #e6edf3;
+    --header-link-color: #e6edf3;
+    --header-link-hover: #58a6ff;
+    --header-logo-color: #FF6A00;
+    --header-icon-color: #8b949e;
+    --header-icon-hover: #58a6ff;
+
+    --footer-background: #161b22;
+    --footer-border-color: #30363d;
+    --footer-text-color: #e6edf3;
+    --footer-link-color: #8b949e;
+    --footer-pipe-color: #30363d;
+    --footer-directory-title-color: #e6edf3;
+    --footer-directory-title-color-hover: #58a6ff;
+
+    --brand: #FF6A00;
+    --background-main: #58a6ff;
+    --background-main-hover: #1158c7;
+    --background-icon: #30363d;
+    --background-menu-hover: #21262d;
+
+    --text-primary: #e6edf3;
+    --text-secondary: #c9d1d9;
+    --text-tertiary: #8b949e;
+    --text-quaternary: #8b949e;
+    --text-quinary: #58a6ff;
+
+    --label-primary: #e6edf3;
+    --label-secondary: #c9d1d9;
+    --label-tertiary: #8b949e;
+    --label-quaternary: #6e7681;
+    --label-disabled: #484f58;
+    --placeholder-text: #6e7681;
+
+    --selected-text-background: #1f6feb;
+    --selected-text-color: #e6edf3;
+    --unemphasized-selected-text: #0d1117;
+    --unemphasized-selected-text-background: #8b949e;
+    --selected-text-background-inactive: #30363d;
+    --selected-content-background: #1f6feb;
+
+    --find-highlight: #58a6ff;
+    --find-highlight-stroke: #79c0ff;
+
+    --fill-primary: #21262d;
+    --fill-secondary: #1c2128;
+    --fill-tertiary: #161b22;
+    --fill-quaternary: #0d1117;
+    --fill-quinary: #0d1117;
+
+    --control-background: #21262d;
+    --control-background-disabled: #161b22;
+    --control-text-disabled: #484f58;
+    --control-border-focus: #58a6ff;
     --control-mini: 24px;
     --control-small: 28px;
     --control-regular: 32px;
     --control-large: 40px;
-    
-    /* ========== SEPARATORS ========== */
-    --separator: #FFFFFF;                   /* solid white */
-    --opaque-separator: #FFFFFF;
-    --grid-color: #444444;
-    --menu-separator: #FFFFFF;
-    
-    /* ========== BORDERS ========== */
-    --border: #FFFFFF;                      /* solid white for maximum visibility */
-    --border-secondary: #CCCCCC;
-    --border-tertiary: #FFD60A;
-    
-    /* ========== SYSTEM ACCENT COLORS (highly saturated) ========== */
-    --blue: #00AAFF;
-    --green: #00FF66;
-    --red: #FF3333;
-    --orange: #FFAA00;
-    --yellow: #FFD60A;
-    --pink: #FF44AA;
-    --purple: #CC66FF;
-    --gray: #AAAAAA;
-    --teal: #00FFCC;
-    --indigo: #8888FF;
-    --mint: #66FFDD;
-    --cyan: #00FFFF;
-    
-    /* Control accent (system-wide) */
-    --control-accent: #FFD60A;
-    --control-accent-hover: #FFB800;
-    --control-accent-pressed: #CC9900;
-    
-    /* ========== KEYBOARD FOCUS ========== */
-    --keyboard-focus-indicator: #FFD60A;
-    --keyboard-focus-ring: #FFD60A;         /* solid, no transparency */
-    --keyboard-focus-ring-light: #FFD60A;
-    --keyboard-focus-ring-dark: #FFB800;
-    
-    /* ========== SHADOWS (keep as is, not critical for high contrast) ========== */
+
+    --separator: #30363d;
+    --opaque-separator: #30363d;
+    --grid-color: #30363d;
+    --menu-separator: #30363d;
+
+    --border: #30363d;
+    --border-secondary: #30363d;
+    --border-tertiary: #58a6ff;
+
+    --blue: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --orange: #FF6A00;
+    --yellow: #d29922;
+    --pink: #db61a2;
+    --purple: #a371f7;
+    --gray: #8b949e;
+    --teal: #39c5cf;
+    --indigo: #a371f7;
+    --mint: #56d4dd;
+    --cyan: #39c5cf;
+
+    --control-accent: #58a6ff;
+    --control-accent-hover: #79c0ff;
+    --control-accent-pressed: #1f6feb;
+
+    --keyboard-focus-indicator: #58a6ff;
+    --keyboard-focus-ring: #58a6ff;
+    --keyboard-focus-ring-light: #58a6ff;
+    --keyboard-focus-ring-dark: #1f6feb;
+
     --tooltip-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     --elevated-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
@@ -130,70 +115,63 @@
     --overlay-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.85);
     --inner-shadow-light: inset 0 1px 0 rgba(255, 255, 255, 0.15);
     --inner-shadow-dark: inset 0 1px 0 rgba(0, 0, 0, 0.3);
-    
-    /* ========== FONTS (unchanged) ========== */
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-family-headline: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    
-    /* ========== ADDITIONAL UI ELEMENTS ========== */
-    /* Progress bars */
-    --progress-bar-background: #2A2A2A;
-    --progress-bar-fill: #FFD60A;
-    
-    /* Scrollbars – solid colors */
-    --scrollbar-track: #000000;
-    --scrollbar-thumb: #888888;
-    --scrollbar-thumb-hover: #AAAAAA;
-    --scrollbar-thumb-active: #CCCCCC;
-    
-    /* Tooltips */
-    --tooltip-background: #000000;
-    --tooltip-text: #FFFFFF;
-    --tooltip-border: #FFFFFF;
-    
-    /* Popovers / menus */
-    --popover-background: #0D0D0D;
-    --popover-border: #FFFFFF;
-    --menu-background: #0D0D0D;
-    --menu-item-hover: #FFD60A;
-    --menu-item-text: #FFFFFF;
-    
-    /* Table / list view */
-    --table-row-even: #000000;
-    --table-row-odd: #111111;
-    --table-row-selected: #FFD60A;
-    --table-header-background: #0D0D0D;
-    
-    /* Buttons */
-    --button-primary-background: #FFD60A;
-    --button-primary-hover: #FFB800;
-    --button-primary-pressed: #CC9900;
-    --button-primary-text: #000000;         /* added for contrast */
-    --button-secondary-background: #2A2A2A;
-    --button-secondary-hover: #3A3A3A;
-    --button-secondary-pressed: #4A4A4A;
-    --button-secondary-text: #FFFFFF;
-    
-    /* Input fields */
-    --input-background: #000000;
-    --input-border: #FFFFFF;
-    --input-focus-border: #FFD60A;
-    --input-placeholder: #AAAAAA;
-    --input-text: #FFFFFF;
-    
-    /* Tabs */
-    --tab-active-background: #FFD60A;
-    --tab-inactive-background: #1A1A1A;
-    --tab-active-text: #000000;
-    --tab-inactive-text: #FFFFFF;
-    
-    /* Status indicators */
-    --status-success: #00FF66;
-    --status-warning: #FFD60A;
-    --status-error: #FF3333;
-    --status-info: #00AAFF;
+
+    --font-family-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-family-headline: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+    --progress-bar-background: #21262d;
+    --progress-bar-fill: #58a6ff;
+
+    --scrollbar-track: #0d1117;
+    --scrollbar-thumb: #30363d;
+    --scrollbar-thumb-hover: #484f58;
+    --scrollbar-thumb-active: #6e7681;
+
+    --tooltip-background: #161b22;
+    --tooltip-text: #e6edf3;
+    --tooltip-border: #30363d;
+
+    --popover-background: #161b22;
+    --popover-border: #30363d;
+    --menu-background: #161b22;
+    --menu-item-hover: #58a6ff;
+    --menu-item-text: #e6edf3;
+
+    --table-row-even: #0d1117;
+    --table-row-odd: #161b22;
+    --table-row-selected: #1f6feb;
+    --table-header-background: #161b22;
+
+    --button-primary-background: #58a6ff;
+    --button-primary-hover: #79c0ff;
+    --button-primary-pressed: #1f6feb;
+    --button-primary-text: #0d1117;
+    --button-secondary-background: #21262d;
+    --button-secondary-hover: #30363d;
+    --button-secondary-pressed: #484f58;
+    --button-secondary-text: #e6edf3;
+
+    --input-background: #0d1117;
+    --input-border: #30363d;
+    --input-focus-border: #58a6ff;
+    --input-placeholder: #6e7681;
+    --input-text: #e6edf3;
+
+    --tab-active-background: #58a6ff;
+    --tab-inactive-background: #161b22;
+    --tab-active-text: #0d1117;
+    --tab-inactive-text: #8b949e;
+
+    --status-success: #3fb950;
+    --status-warning: #d29922;
+    --status-error: #f85149;
+    --status-info: #58a6ff;
 }
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
 
 textarea,
 input[type="text"],
@@ -204,14 +182,12 @@ input[type="search"],
 input[type="button"],
 input[type="submit"],
 button {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
 }
 
-html {
-    height: 100%;
-}
+html { height: 100%; }
 
 * {
     margin: 0;
@@ -219,7 +195,22 @@ html {
     box-sizing: border-box;
 }
 
-/* Search Styles */
+body {
+    font-family: var(--font-family-system);
+    background: var(--background-primary);
+    color: var(--text-primary);
+}
+
+.Yes { display: none; }
+@media (max-width: 768px) {
+    .No { display: none; }
+    .Yes { display: inline; }
+}
+
+/* ============================================================
+   PAGE NAVIGATION / BREADCRUMBS
+   ============================================================ */
+
 .TableSearch {
     background: var(--background-secondary);
     border: 1px solid var(--border-tertiary);
@@ -227,22 +218,23 @@ html {
     overflow: hidden;
 }
 
-/* Navigator */
 .Navigator {
     padding-left: 20px;
     padding-right: 20px;
     background: var(--background-secondary);
     height: 60px;
     width: 100%;
-	border-bottom: 1px solid var(--border-tertiary);
+    border-bottom: 1px solid var(--border-tertiary);
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .NavigatorInfo {
-	background: var(--background-tertiary);
+    background: var(--background-tertiary);
     padding: 20px;
     min-height: 60px;
     color: var(--text-primary);
-	border-bottom: 1px solid var(--border-tertiary);
+    border-bottom: 1px solid var(--border-tertiary);
 }
 
 .NavigatorInfo a {
@@ -251,28 +243,31 @@ html {
 }
 
 .UNavigator {
-	background: var(--background-primary);
+    background: var(--background-primary);
     padding: 5px;
     color: var(--text-primary);
     font-size: 12px;
     text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .DivButton {
     line-height: 60px;
-	border-bottom: 1px solid var(--border-tertiary);
-	text-align: right;
-	padding-left: 20px;
-	padding-right: 20px;
+    border-bottom: 1px solid var(--border-tertiary);
+    text-align: right;
+    padding-left: 20px;
+    padding-right: 20px;
     white-space: nowrap;
     overflow-x: auto;
 }
 
-/* Title Styles */
 .Title {
     line-height: 60px;
     color: var(--text-primary);
-	border-bottom: 1px solid var(--border-tertiary);
+    border-bottom: 1px solid var(--border-tertiary);
 }
 
 .LTRTitle {
@@ -280,15 +275,27 @@ html {
     font-size: 18px;
     font-family: inherit;
     padding-left: 60px;
-    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .RTLTitle {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Cairo', Tahoma, Arial, sans-serif;
     padding-right: 60px;
+}
+
+.TitleH {
+    line-height: 60px;
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-tertiary);
+    border-bottom: 1px solid var(--border-tertiary);
+    font-weight: 700;
+    font-size: 18px;
+    font-family: inherit;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .UnderTitle {
@@ -303,24 +310,21 @@ html {
 .TitleB {
     background: var(--background-tertiary);
     color: var(--text-primary);
-	line-height: 60px;
+    line-height: 60px;
     padding-left: 20px;
 }
 
-.NavigatorHeight {
-    height: 60px;
-}
+.NavigatorHeight { height: 60px; }
 
-/* Navigator Links */
 a.NavigatorLink:link,
 a.NavigatorLink:visited {
-    color: var(--text-primary);
+    color: #58a6ff;
     text-decoration: none;
 }
 
 a.NavigatorLink:active,
 a.NavigatorLink:hover {
-    color: var(--yellow);
+    color: #58a6ff;
     text-decoration: none;
 }
 
@@ -342,10 +346,7 @@ a.NavigatorLink:hover {
     line-height: 60px;
 }
 
-/* Input Styles */
-input, select, textarea {
-    outline: none;
-}
+input, select, textarea { outline: none; }
 
 .DivAction path {
     background: var(--background-secondary);
@@ -353,6 +354,10 @@ input, select, textarea {
     line-height: 64px;
     padding: 20px;
 }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
 
 .DivInput {
     width: 100%;
@@ -364,9 +369,9 @@ input, select, textarea {
 
 .DivInput input, select {
     margin-top: 8px;
-    margin-bottom: 0px;
-	padding:0px 0px 4px 0px;
-	width:50%;
+    margin-bottom: 0;
+    padding: 0 0 4px 0;
+    width: 50%;
 }
 
 .DivInput textarea {
@@ -398,7 +403,6 @@ input, select, textarea {
     -webkit-border-radius: 60px;
 }
 
-/* Text Inputs */
 .InputText,
 .InputText50,
 .InputText30 {
@@ -419,7 +423,6 @@ input, select, textarea {
     border-bottom: 1px solid var(--border-tertiary);
 }
 
-/* Select Dropdowns */
 .Select {
     color: var(--text-primary);
     font-size: 16px;
@@ -430,12 +433,11 @@ input, select, textarea {
     cursor: pointer;
 }
 
-/* Buttons */
 .InputButton {
     font-weight: 600;
     font-size: 14px;
     padding: 10px 20px;
-    border:1px solid var(--background-logo);
+    border: 1px solid var(--background-main);
     background: var(--background-primary);
     color: var(--text-primary);
     cursor: pointer;
@@ -450,12 +452,11 @@ input, select, textarea {
     box-shadow: var(--elevated-shadow);
 }
 
-/* Main Links */
 a.Main:link,
 a.Main:visited,
 a.Main:active,
 a.Main:hover {
-    color: var(--text-primary);
+    color: #58a6ff;
     text-decoration: none;
 }
 
@@ -472,6 +473,10 @@ a.Main:hover {
     text-decoration: none;
     font-family: 'Cairo', Tahoma, Arial, sans-serif;
 }
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
 
 a.Action:link,
 a.Action:visited {
@@ -527,7 +532,6 @@ a.ActionB:hover {
     box-shadow: var(--card-shadow);
 }
 
-/* Info Panels */
 .DivInfo {
     background: var(--background-tertiary);
     font-weight: 600;
@@ -569,7 +573,10 @@ a.ActionB:hover {
     font-family: Verdana, Arial, 'Times New Roman', sans-serif;
 }
 
-/* Pagination */
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+
 .Pages {
     min-width: 30px;
     line-height: 30px;
@@ -591,8 +598,8 @@ a.ActionB:hover {
 }
 
 .Pages:hover {
-    background: var(--background-logo);
-    border-color: var(--background-logo);
+    background: var(--background-main);
+    border-color: var(--background-main);
     color: var(--text-primary);
     transform: translateY(-2px);
     box-shadow: var(--card-shadow);
@@ -601,9 +608,9 @@ a.ActionB:hover {
 .PagesOver {
     min-width: 30px;
     line-height: 30px;
-    background: var(--background-logo);
+    background: var(--background-main);
     color: var(--text-primary);
-    border: 1px solid var(--background-logo);
+    border: 1px solid var(--background-main);
     padding: 4px 8px;
     margin-left: 4px;
     display: inline-flex;
@@ -622,23 +629,23 @@ pre {
     color: var(--text-primary);
 }
 
-/* Tables */
+/* ============================================================
+   TABLES
+   ============================================================ */
+
 .DivTable {
     margin: 20px;
-	overflow-x: auto;
-	white-space: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .DivXTable {
     margin-top: 20px;
-	overflow-x: auto;
-	white-space: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
-.DivPages {
-    margin-bottom: 20px;
-}
-
+.DivPages { margin-bottom: 20px; }
 
 .Table {
     background: var(--background-primary);
@@ -660,20 +667,16 @@ pre {
     line-height: 60px;
 }
 
-/* Table Header */
-THEAD tr {
-    background: var(--background-primary);
-}
+THEAD tr { background: var(--background-primary); }
 
 THEAD tr th {
     border-bottom: 1px solid var(--border-tertiary);
-	padding: 8px 10px;
+    padding: 8px 10px;
     color: var(--text-primary);
     font-size: 12px;
     font-weight: 700;
     text-align: left;
 }
-
 
 THEAD tr th a {
     color: var(--text-primary);
@@ -683,7 +686,7 @@ THEAD tr th a {
 TFOOT tr th {
     background: var(--background-primary);
     height: 60px;
-	padding: 12px 8px;
+    padding: 12px 8px;
     color: var(--text-primary);
     font-size: 14px;
     font-weight: 400;
@@ -696,9 +699,9 @@ TFOOT tr th {
     font-family: inherit;
     font-size: 12px;
     font-weight: 400;
+    color: var(--text-primary);
 }
 
-/* Table Cell Variants */
 .Td,
 .TdB,
 .TdEr,
@@ -715,27 +718,12 @@ TFOOT tr th {
     text-decoration: none;
 }
 
-.TdEr {
-    color: var(--red);
-    height: 60px;
-}
+.TdEr { color: var(--red); height: 60px; }
+.TdEr a { color: var(--red); text-decoration: none; }
 
-.TdEr a {
-    color: var(--red);
-    text-decoration: none;
-}
+.TdInfo { color: var(--blue); height: 60px; }
+.TdInfo a { color: var(--blue); text-decoration: none; }
 
-.TdInfo {
-    color: var(--blue);
-    height: 60px;
-}
-
-.TdInfo a {
-    color: var(--blue);
-    text-decoration: none;
-}
-
-/* Error/Info Messages */
 .NoError {
     background: var(--background-primary);
     font-weight: normal;
@@ -743,12 +731,10 @@ TFOOT tr th {
     padding: 20px;
     border-bottom: 1px solid var(--border-tertiary);
     box-shadow: var(--card-shadow);
-	min-height:60px;
+    min-height: 60px;
 }
 
-.NoError a {
-    color: var(--green);
-}
+.NoError a { color: var(--green); }
 
 .Error {
     background: var(--red);
@@ -756,23 +742,22 @@ TFOOT tr th {
     padding: 20px;
     border-bottom: 1px solid var(--border-tertiary);
     box-shadow: var(--card-shadow);
-	min-height:60px;
+    min-height: 60px;
 }
 
-.Error a {
-    color: var(--text-primary);
-}
+.Error a { color: var(--text-primary); }
 
 .IError {
     font-size: 12px;
-    color: #FFAAAA;
+    color: #ffa198;
 }
 
-.MainFill {
-    fill: var(--background-logo);
-}
+.MainFill { fill: var(--background-main); }
 
-/* Charts */
+/* ============================================================
+   CHARTS
+   ============================================================ */
+
 .DivChart {
     padding-left: 8px;
     padding-right: 8px;
@@ -795,14 +780,6 @@ TFOOT tr th {
     border-radius: 12px;
 }
 
-.ChartTitle {
-    font-weight: 400;
-    font-size: 1rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    margin-bottom: 20px;
-}
-
 .ChartA {
     width: 50%;
     line-height: 30px;
@@ -817,33 +794,32 @@ TFOOT tr th {
     border-bottom: 1px solid var(--border-tertiary);
 }
 
-/* ============================================
-   ADDITIONAL UTILITIES & RESPONSIVE STYLES
-   ============================================ */
+/* ============================================================
+   MEDIA QUERIES
+   ============================================================ */
 
-/* Responsive Sidebar */
 @media (max-width: 768px) {
     .TdLeft {
         width: 200px;
         min-width: 200px;
     }
-    
+
     .DivInput,
     .DivInputB {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .InputText50,
     .InputText30 {
         width: 100%;
     }
-    
+
     .Chart {
         width: calc(100% - 20px);
         margin: 8px;
     }
-    
+
     .Pages,
     .PagesOver {
         min-width: 36px;
@@ -851,18 +827,10 @@ TFOOT tr th {
     }
 }
 
-/* Tablet Styles */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .Icon {
-        width: calc(33.33% - 20px);
-    }
-    
-    .Chart {
-        width: calc(50% - 20px);
-    }
-}
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 
-/* Scrollbar Styling - Matching Theme */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -879,40 +847,73 @@ TFOOT tr th {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--background-logo);
-}
-    
-THEAD tr th {
-    border-bottom: 1px solid var(--border-tertiary);
-}
-    
-.Table TBODY tr td {
-    border-bottom: 1px solid var(--border-tertiary);
-    color: var(--text-primary);
-    height: 60px;
+    background: var(--background-main);
 }
 
-/* Loading Animation for Preloader */
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
 @keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.5; }
+}
+
+@keyframes pulseRing {
+    0%   { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); }
+    70%  { box-shadow: 0 0 0 10px rgba(88, 166, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes subMenuOpen {
+    from { opacity: 0; transform: translateY(-2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes menuOpen {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes progress-stripes {
+    from { background-position: 20px 0; }
+    to   { background-position: 0 0; }
 }
 
 .preloader-image[data-loading="true"] {
     animation: pulse 1s ease-in-out infinite;
 }
 
+.status-online { color: var(--green); }
 
-/* Status Indicators */
-.status-online {
-    color: var(--green);
-}
+/* ============================================================
+   APP SHELL
+   ============================================================ */
 
-/* Main App Container */
 .app-container {
     display: flex;
     flex-direction: column;
@@ -920,7 +921,6 @@ THEAD tr th {
     overflow: hidden;
 }
 
-/* Top Area - Height 60px */
 .top-area {
     height: 60px;
     background-color: var(--header-background);
@@ -935,11 +935,6 @@ THEAD tr th {
     gap: 15px;
 }
 
-/* ============================================
-   SLIDBAR STYLES - CIRCLE ON LEFT, CENTERED ARROW
-   ============================================ */
-
-/* Slidbar Container - Positioned on LEFT */
 .Slidbar {
     display: flex;
     align-items: center;
@@ -949,7 +944,6 @@ THEAD tr th {
     padding: 0;
 }
 
-/* Perfect Circle Button */
 .slider-toggle {
     display: flex;
     align-items: center;
@@ -969,16 +963,15 @@ THEAD tr th {
 }
 
 .slider-toggle:hover {
-    background-color: var(--orange);
+    background-color: var(--background-main);
     transform: scale(1.05);
-    box-shadow: var(--card-shadow);
+    animation: pulseRing 1.5s infinite;
 }
 
 .slider-toggle:active {
     transform: scale(0.95);
 }
 
-/* Arrow Icon - Perfectly Centered */
 .slider-icon {
     width: 20px;
     height: 20px;
@@ -992,7 +985,6 @@ THEAD tr th {
     pointer-events: none;
 }
 
-/* Rotate animation for the arrow when sidebar is collapsed */
 .slider-toggle.collapsed .slider-icon {
     transform: translate(-50%, -50%) rotate(180deg);
 }
@@ -1001,7 +993,6 @@ THEAD tr th {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* Fix for SVG inside slider-icon */
 .slider-icon svg {
     display: block;
     width: 100%;
@@ -1010,7 +1001,6 @@ THEAD tr th {
     stroke-width: 2;
 }
 
-/* Logo Section - Next to Slidbar */
 .logo-area {
     display: flex;
     align-items: center;
@@ -1024,7 +1014,7 @@ THEAD tr th {
 }
 
 .logo-text {
-    color: var(--background-logo);
+    color: var(--brand);
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
@@ -1033,10 +1023,8 @@ THEAD tr th {
 
 .logo-text:hover {
     opacity: 0.9;
-    color: var(--orange);
 }
 
-/* User Info Section - Pushed to RIGHT */
 .user-info {
     display: flex;
     align-items: center;
@@ -1050,22 +1038,13 @@ THEAD tr th {
 }
 
 .welcome-text a {
-    color: var(--background-logo);
+    color: var(--background-main);
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
 .welcome-text a:hover {
     text-decoration: underline;
-}
-
-/* ============================================
-   USER DROPDOWN MENU & CUSTOM SELECT (menu.php)
-   ============================================ */
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 .custom-select-wrapper {
@@ -1082,21 +1061,19 @@ THEAD tr th {
     padding: 0 30px 0 15px;
     font-size: 0.9rem;
     background: var(--background-primary);
-    border: 0px;
+    border: 0;
     border-radius: 60px;
     color: var(--text-primary);
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%23FFFFFF' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='6 9 12 15 18 9' fill='%23FFFFFF'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%238b949e' stroke='%238b949e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='6 9 12 15 18 9' fill='%238b949e'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     background-size: 16px;
     line-height: 1;
 }
 
-.custom-select:focus {
-    outline: none;
-}
+.custom-select:focus { outline: none; }
 
 .separator {
     width: 1px;
@@ -1104,9 +1081,7 @@ THEAD tr th {
     background: var(--label-tertiary);
 }
 
-.user-dropdown {
-    position: relative;
-}
+.user-dropdown { position: relative; }
 
 .dropdown-trigger {
     display: flex;
@@ -1117,12 +1092,12 @@ THEAD tr th {
     height: 44px;
     background: transparent;
     border-radius: 50%;
-    border: 2px solid var(--background-logo);
+    border: 2px solid var(--background-main);
     transition: all 0.2s;
 }
 
 .dropdown-trigger:hover {
-    background: var(--background-logo);
+    background: transparent;
     transform: scale(1.02);
 }
 
@@ -1133,14 +1108,14 @@ THEAD tr th {
 .dropdown-icon {
     width: 24px;
     height: 24px;
-    stroke: var(--background-logo);
+    stroke: var(--background-main);
 }
 
 .dropdown-menu {
     position: absolute;
     top: 54px;
     right: 0;
-    background: var(--background-tertiary);
+    background: var(--background-secondary);
     border-radius: 16px;
     box-shadow: var(--menu-shadow);
     width: 240px;
@@ -1149,7 +1124,7 @@ THEAD tr th {
     transform: translateY(-8px);
     transition: all 0.2s ease;
     z-index: 1000;
-    border: 1px solid var(--popover-border);
+    border: 1px solid var(--background-main);
     overflow: hidden;
 }
 
@@ -1172,17 +1147,9 @@ THEAD tr th {
     font-weight: 500;
 }
 
-.dropdown-item:first-child {
-    border-radius: 16px 16px 0 0;
-}
-
-.dropdown-item:last-child {
-    border-radius: 0 0 16px 16px;
-}
-
-.dropdown-item:hover {
-    background: var(--background-logo);
-}
+.dropdown-item:first-child { border-radius: 16px 16px 0 0; }
+.dropdown-item:last-child  { border-radius: 0 0 16px 16px; }
+.dropdown-item:hover       { background: var(--background-main-hover);}
 
 .dropdown-item:hover .dropdown-item-icon {
     stroke: var(--text-primary);
@@ -1191,7 +1158,7 @@ THEAD tr th {
 .dropdown-item-icon {
     width: 20px;
     height: 20px;
-    stroke: var(--background-logo);
+    stroke: var(--background-main);
 }
 
 .dropdown-divider {
@@ -1199,6 +1166,10 @@ THEAD tr th {
     background: var(--separator);
     margin: 6px 0;
 }
+
+/* ============================================================
+   MAIN / SIDEBAR
+   ============================================================ */
 
 .main-content {
     display: flex;
@@ -1221,7 +1192,15 @@ THEAD tr th {
     position: relative;
 }
 
-/* Resizer Handle - Draggable to resize left area */
+@media (max-width: 768px) {
+    .left-area,
+    .Slidbar { display: none !important; }
+    .right-area {
+        width: 100%;
+        padding: 0;
+    }
+}
+
 .resizer {
     width: 5px;
     height: 100%;
@@ -1236,16 +1215,15 @@ THEAD tr th {
 }
 
 .resizer:hover {
-    background: var(--background-logo);
+    background: var(--background-main);
     width: 6px;
 }
 
 .resizer.active {
-    background: var(--orange);
+    background: var(--background-main);
     width: 6px;
 }
 
-/* Disable text selection while resizing */
 body.resizing {
     cursor: col-resize !important;
     user-select: none !important;
@@ -1263,28 +1241,11 @@ body.resizing {
     flex: 1;
     background: var(--background-primary);
     overflow-y: auto;
-    padding: 0px;
+    padding: 0;
     transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================
-   LOAD DIV & ANIMATIONS
-   ============================================ */
-
-.DivLoad {
-    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+.DivLoad { animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
 .loading {
     display: flex;
@@ -1298,270 +1259,428 @@ body.resizing {
     width: 40px;
     height: 40px;
     border: 3px solid var(--background-tertiary);
-    border-top-color: var(--background-logo);
+    border-top-color: var(--background-main);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* ============================================
-   SEARCH STYLES
-   ============================================ */
+/* ============================================================
+   SIDEBAR SEARCH
+   ============================================================ */
 
 .Search {
-    padding: 0;
-    background-color: var(--background-secondary);
+    padding: 12px;
+    background: var(--background-secondary);
     position: sticky;
     top: 0;
     z-index: 10;
     flex-shrink: 0;
-    border-bottom: 1px solid var(--border-tertiary);
-    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    height: auto;
+    display: flex;
+    align-items: center;
 }
 
 .Search input {
     width: 100%;
-    height: 58px;
-    padding: 0 58px 0 16px;
-    background-color: var(--background-secondary);
-    border: none;
-    outline: none;
+    height: 38px;
+    padding: 0 14px 0 40px;
+    background: var(--background-tertiary);
+    border: 1px solid transparent;
+    border-radius: 10px;
     color: var(--text-primary);
-    font-size: 14px;
-    transition: all 0.2s ease;
+    font-size: 13px;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     margin: 0;
-    border-radius: 0;
     box-sizing: border-box;
-}
-
-.Search input:focus {
-    background-color: var(--background-tertiary-hover);
+    outline: none;
 }
 
 .Search input::placeholder {
-    color: var(--placeholder-text);
+    color: var(--label-tertiary);
     font-size: 13px;
 }
 
-.Search input:hover {
-    background-color: var(--background-tertiary-hover);
+.Search input:hover { background: var(--background-tertiary-hover); }
+
+.Search input:focus {
+    background: var(--background-primary);
+    border-color: var(--border-tertiary);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
 }
 
 .Search::before {
     content: '';
     position: absolute;
-    right: 12px;
+    left: 26px;
     top: 50%;
     transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238E8E93'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+    width: 15px;
+    height: 15px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b949e' stroke-width='2.2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath stroke-linecap='round' d='M20 20l-3.5-3.5'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1;
 }
 
-.Search:hover::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23FF6A00'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
-}
+.Search input:focus ~ *,
+.Search:focus-within::before { opacity: 1; }
 
-.Search input::-webkit-search-cancel-button {
-    display: none;
-}
+.Search input::-webkit-search-cancel-button { display: none; }
+
+/* ============================================================
+   SIDEBAR NAVIGATION WRAPPER
+   ============================================================ */
 
 .nav-wrapper {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 8px 0 16px;
 }
 
-.nav-wrapper::-webkit-scrollbar {
-    width: 8px;
-}
-
-.nav-wrapper::-webkit-scrollbar-track {
-    background: var(--background-secondary);
-    border-radius: 10px;
-}
-
+.nav-wrapper::-webkit-scrollbar { width: 6px; }
+.nav-wrapper::-webkit-scrollbar-track { background: transparent; }
 .nav-wrapper::-webkit-scrollbar-thumb {
-    background: var(--background-tertiary);
-    border-radius: 10px;
-    transition: background 0.2s ease;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
 }
-
 .nav-wrapper::-webkit-scrollbar-thumb:hover {
-    background: var(--background-logo);
+    background: rgba(255, 255, 255, 0.16);
 }
 
 .no-results-msg {
-    padding: 20px;
+    padding: 24px 20px;
     text-align: center;
-    color: var(--label-secondary);
-    font-size: 13px;
-    background-color: var(--background-secondary);
-    border-top: 1px solid var(--grid-color);
+    color: var(--label-tertiary);
+    font-size: 12px;
+    letter-spacing: 0.2px;
 }
-
-/* ============================================
-   CONTROL PANEL MENU - FIXED POSITIONING
-   ============================================ */
 
 .DivControl {
     width: 100%;
     background-color: var(--background-secondary);
     display: flex;
     flex-direction: column;
+    gap: 6px;
 }
 
 .MenuSection {
     display: block;
-    margin-bottom: 4px;
-    border-bottom: 1px solid var(--grid-color);
+    margin: 0 8px;
     flex-shrink: 0;
 }
 
-.MenuSection:last-child {
-    border-bottom: none;
+.MenuSection + .MenuSection {
+    padding-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.MenuB, 
+/* ============================================================
+   SECTION HEADERS (MenuB) — matches docs "Pages" h3 exactly
+   font: system · size: 12px · weight: bold (700) · gray #8b949e
+   ============================================================ */
+
+.MenuB,
 h2.MenuB {
     display: flex;
     align-items: center;
-    padding: 10px 16px 10px 12px;
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0;
-    border-left: 3px solid var(--border-tertiary);
     gap: 10px;
-    min-height: 36px;
+    padding: 9px 10px;
+    margin: 6px 0 2px;
+    background-color: transparent;
+    color: var(--label-tertiary);
+    font-family: var(--font-family-system);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    user-select: none;
+    min-height: 34px;
 }
 
 .MenuB:hover,
 h2.MenuB:hover {
     background-color: var(--background-tertiary);
+    color: var(--text-primary);
 }
 
-.menu-arrow {
-    font-size: 10px;
-    transition: transform 0.3s ease;
-    color: var(--text-primary);
-    display: inline-block;
+.MenuB .menu-icon {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    display: block;
+}
+.MenuB:hover .menu-icon { opacity: 1; }
+
+.MenuB .menu-arrow {
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--label-tertiary);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+    transform: rotate(0deg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
     flex-shrink: 0;
 }
 
-.menu-arrow.rotated {
+.MenuB .menu-arrow.rotated {
     transform: rotate(90deg);
+    color: var(--text-primary);
 }
+
+.MenuB:hover .menu-arrow { color: var(--text-primary); }
+
+/* ============================================================
+   menu-title — same font / size / weight as .sidebar h3
+   ============================================================ */
 
 .menu-title {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--label-tertiary);
+    font-family: var(--font-family-system);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
 }
 
 .MenuItems {
     list-style: none;
     margin: 0;
-    padding: 0;
-    background-color: var(--background-secondary);
+    padding: 0 0 4px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
 }
 
 .MenuItem {
     margin: 0;
     padding: 0;
-    border-bottom: 1px solid var(--grid-color);
+    border: none;
 }
 
-.MenuItem:last-child {
-    border-bottom: none;
-}
+/* ============================================================
+   MENU ITEMS — inactive BLUE / active WHITE
+   ============================================================ */
 
-/* Menu Item Styles - NO POSITION SHIFT */
 .Menu,
 div.Menu {
     display: flex;
     align-items: center;
-    padding: 8px 16px 8px 32px;
-    color: var(--text-secondary);
-    font-size: 12px;
+    padding: 8px 38px;
+    margin: 0;
+    color: var(--background-main);
+    font-family: var(--font-family-system);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
     cursor: pointer;
     position: relative;
-    border-left: 3px solid transparent;
-    margin: 0;
-    min-height: 36px;
-    line-height: 1.2;
+    border: none;
+    border-radius: 8px;
+    min-height: 32px;
     background-color: transparent;
-    transition: background-color 0.25s ease, color 0.25s ease, border-left-color 0.25s ease;
+    transition: background-color 0.18s ease, color 0.18s ease;
+    overflow: hidden;
 }
 
-/* Hover effect - NO TRANSFORM */
+.Menu::before,
+div.Menu::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 2px;
+    height: 16px;
+    border-radius: 2px;
+    background: var(--background-main);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .Menu:hover,
 div.Menu:hover {
     background-color: var(--background-tertiary);
-    color: var(--text-primary);
-    border-left-color: var(--border-tertiary);
+    color: var(--background-main);
 }
 
-/* Active menu item - Logo color background with white text - NO POSITION CHANGE */
+.Menu:hover::before,
+div.Menu:hover::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+.MenuItems:hover .Menu:not(:hover) {
+    color: var(--background-main);
+    opacity: 0.7;
+}
+
 .Menu.active,
 div.Menu.active {
-    background-color: var(--background-logo) !important;
+    background-color: rgba(88, 166, 255, 0.12) !important;
     color: var(--text-primary) !important;
-    border-left-color: var(--border-tertiary);
-    min-height: 36px;
-    /* Keep exact same padding as regular items */
-    padding: 8px 16px 8px 32px !important;
+    font-weight: 600;
+    padding: 8px 38px !important;
     margin: 0 !important;
-    /* Remove any transforms */
+    border-radius: 8px !important;
     transform: none !important;
-    /* Add subtle shadow but no position change */
-    box-shadow: var(--inner-shadow-light), var(--tooltip-shadow);
+    box-shadow: none !important;
+    border: none !important;
 }
 
-/* Active menu item hover - keep same position */
+.Menu.active::before,
+div.Menu.active::before {
+    transform: translateY(-50%) scaleY(1);
+    background: var(--text-primary);
+}
+
 .Menu.active:hover,
 div.Menu.active:hover {
-    background-color: var(--background-menu-hover) !important;
+    background-color: rgba(88, 166, 255, 0.18) !important;
     color: var(--text-primary) !important;
-    transform: none !important;
 }
 
-/* Click animation - subtle without position shift */
 .Menu:active,
 div.Menu:active {
-    transform: scale(0.99);
-    transition: transform 0.05s ease;
+    transform: scale(0.985);
+    transition: transform 0.08s ease;
 }
 
-/* Menu toggle states */
-.MenuItems.closed {
-    display: none !important;
+.Menu:focus-visible {
+    outline: 2px solid var(--border-tertiary);
+    outline-offset: -2px;
+    border-radius: 8px;
 }
+
+/* ============================================================
+   SUB-MENU
+   ============================================================ */
+
+.Menu.has-children {
+    position: relative;
+    padding-right: 32px;
+}
+
+.Menu.has-children::after {
+    content: '›';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--label-tertiary);
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.Menu.has-children.expanded::after {
+    transform: translateY(-50%) rotate(90deg);
+    color: var(--text-primary);
+}
+
+.Menu.has-children:hover::after { color: var(--text-primary); }
+
+.SubMenu {
+    list-style: none;
+    margin: 0;
+    padding: 2px 0 4px 0;
+    display: none;
+    flex-direction: column;
+    gap: 1px;
+    position: relative;
+}
+
+.SubMenu.open {
+    display: flex;
+    animation: subMenuOpen 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.SubMenu::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 4px;
+    bottom: 6px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1px;
+}
+
+.SubMenu .Menu,
+.SubMenu div.Menu {
+    padding: 6px 38px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--background-main);
+    min-height: 28px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    border-radius: 8px;
+}
+
+.SubMenu .Menu::before,
+.SubMenu div.Menu::before { display: none; }
+
+.SubMenu .Menu:hover,
+.SubMenu div.Menu:hover {
+    background-color: var(--background-tertiary);
+    color: var(--background-main);
+}
+
+.SubMenu .Menu.active,
+.SubMenu div.Menu.active {
+    background-color: rgba(88, 166, 255, 0.10) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    padding: 6px 38px !important;
+}
+
+.SubMenu:hover .Menu:not(:hover) {
+    color: var(--background-main);
+    opacity: 0.7;
+}
+
+.MenuItems:hover .SubMenu .Menu { opacity: 1; }
+
+.MenuItems.closed { display: none !important; }
 
 .MenuItems.open {
-    display: block !important;
+    display: flex !important;
+    animation: menuOpen 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================
-   SIDEBAR COLLAPSE/EXPAND STYLES - 40px ONLY
-   ============================================ */
+/* ============================================================
+   COLLAPSED SIDEBAR (40px wide)
+   ============================================================ */
 
 .left-area-inner[style*="width: 40px"],
-.left-area-inner[style*="width: 40px;"] {
+.left-area-inner[style*="width: 40px;"],
+.left-area[style*="width: 40px"],
+.left-area[style*="width: 40px;"] {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .left-area[style*="width: 40px"],
 .left-area[style*="width: 40px;"] {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid var(--border-tertiary);
 }
 
 .left-area-inner[style*="width: 40px"] .menu-title,
@@ -1577,9 +1696,11 @@ div.Menu:active {
 .left-area-inner[style*="width: 40px"] .Menu,
 .left-area-inner[style*="width: 40px;"] .Menu {
     padding: 8px 0 !important;
+    margin: 2px 4px !important;
     text-align: center !important;
-    font-size: 0 !important;
     justify-content: center !important;
+    font-size: 0 !important;
+    border-radius: 8px !important;
 }
 
 .left-area-inner[style*="width: 40px"] .MenuB,
@@ -1593,9 +1714,7 @@ div.Menu:active {
     display: none !important;
 }
 
-.left-area-inner[style*="width: 40px"] .Menu {
-    position: relative;
-}
+.left-area-inner[style*="width: 40px"] .Menu { position: relative; }
 
 .left-area-inner[style*="width: 40px"] .Menu:hover::after {
     content: attr(data-title);
@@ -1603,7 +1722,7 @@ div.Menu:active {
     left: 50px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--background-logo);
+    background-color: var(--background-main);
     color: var(--text-primary);
     padding: 6px 12px;
     border-radius: 8px;
@@ -1659,15 +1778,9 @@ div.Menu:active {
     padding: 12px 0;
 }
 
-.left-area[style*="width: 40px"],
-.left-area[style*="width: 40px;"] {
-    border-right: 1px solid var(--border-tertiary);
-}
-
-.left-area-inner[style*="width: 40px"] .Menu::before {
-    display: inline-block;
-    font-size: 18px;
-    margin: 0 auto;
+.left-area-inner[style*="width: 40px"] .Menu::before,
+.left-area-inner[style*="width: 40px;"] .Menu::before {
+    display: none !important;
 }
 
 .left-area-inner[style*="width: 40px"] .slider-toggle.collapsed .slider-icon,
@@ -1675,240 +1788,104 @@ div.Menu:active {
     transform: translate(-50%, -50%) rotate(180deg) !important;
 }
 
-/* Sidebar collapsed active menu item - keep icon visible */
 .left-area-inner[style*="width: 40px"] .Menu.active,
 .left-area-inner[style*="width: 40px;"] .Menu.active {
-    background-color: transparent !important;
+    background-color: rgba(88, 166, 255, 0.15) !important;
     padding: 8px 0 !important;
+    margin: 2px 4px !important;
 }
 
 .left-area-inner[style*="width: 40px"] .Menu.active::before {
-    color: var(--background-logo) !important;
+    color: var(--background-main) !important;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+.left-area-inner[style*="width: 40px"] .MenuB .menu-arrow,
+.left-area-inner[style*="width: 40px;"] .MenuB .menu-arrow {
+    margin: 0 auto !important;
+    transform: rotate(90deg) !important;
+}
+
+.left-area-inner[style*="width: 40px"] .SubMenu,
+.left-area-inner[style*="width: 40px;"] .SubMenu {
+    display: none !important;
+}
+
+.left-area-inner[style*="width: 40px"] .Menu.has-children::after,
+.left-area-inner[style*="width: 40px;"] .Menu.has-children::after {
+    display: none !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 768px) {
     .top-area {
         gap: 10px;
         padding: 0 15px;
     }
-    
-    .logo-text {
-        font-size: 16px;
-    }
-    
-    .logo-area img {
-        height: 32px;
-    }
-    
-    .welcome-text {
-        font-size: 12px;
-    }
-    
-    .left-area {
-        width: 240px;
-    }
-    
-    .right-area {
-        padding: 15px;
-    }
-    
+
+    .logo-text { font-size: 16px; }
+    .logo-area img { height: 32px; }
+    .welcome-text { font-size: 12px; }
+    .left-area { width: 240px; }
+
     .custom-select {
         min-width: 120px;
         font-size: 11px;
         padding: 6px 28px 6px 12px;
     }
-    
-    .dropdown-trigger {
-        padding: 6px 12px;
-    }
-    
-    .dropdown-menu {
-        min-width: 180px;
-    }
-    
+
+    .dropdown-trigger { padding: 6px 12px; }
+    .dropdown-menu { min-width: 180px; }
+
     .Search input {
-        height: 40px;
-        font-size: 13px;
-        padding: 0 36px 0 12px;
-    }
-    
-    .MenuB, h2.MenuB {
-        padding: 8px 12px;
-        font-size: 12px;
-        min-height: 34px;
-    }
-    
-    .Menu, div.Menu {
-        padding: 6px 12px 6px 28px;
-        font-size: 11px;
-        min-height: 34px;
-    }
-    
-    .Menu.active, div.Menu.active {
-        padding: 6px 12px 6px 28px !important;
-    }
-    
-    .slider-toggle {
-        width: 36px;
         height: 36px;
+        font-size: 12px;
+        padding: 0 12px 0 36px;
     }
-    
-    .slider-icon {
-        width: 18px;
-        height: 18px;
-    }
-}
 
-@media (max-width: 480px) {
-    .top-area {
-        gap: 8px;
-        padding: 0 10px;
+    .Search::before {
+        left: 22px;
+        width: 14px;
+        height: 14px;
     }
-    
-    .left-area {
-        width: 200px;
-    }
-    
-    .right-area {
-        padding: 10px;
-    }
-    
-    .user-info {
-        gap: 8px;
-    }
-    
-    .welcome-text {
-        font-size: 11px;
-    }
-    
-    .logo-text {
-        font-size: 14px;
-    }
-    
-    .logo-area img {
-        height: 28px;
-    }
-    
-    .custom-select {
-        min-width: 100px;
-        font-size: 10px;
-        padding: 5px 24px 5px 10px;
-    }
-    
-    .dropdown-trigger {
-        padding: 5px 10px;
-    }
-    
-    .dropdown-icon {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .dropdown-menu {
-        min-width: 160px;
-    }
-    
-    .dropdown-item {
-        padding: 10px 12px;
-        font-size: 12px;
-    }
-    
-    .Search input {
-        height: 40px;
-        font-size: 12px;
-        padding: 0 34px 0 10px;
-    }
-    
+
     .MenuB, h2.MenuB {
-        padding: 6px 10px;
+        padding: 8px 10px;
         font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .05em;
         min-height: 32px;
     }
-    
-    .Menu, div.Menu {
-        padding: 5px 10px 5px 24px;
-        font-size: 10px;
-        min-height: 32px;
-    }
-    
-    .Menu.active, div.Menu.active {
-        padding: 5px 10px 5px 24px !important;
-    }
-    
-    .slider-toggle {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .slider-icon {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .separator {
+
+    .MenuB .menu-arrow {
+        font-size: 16px;
+        width: 20px;
         height: 20px;
-        margin: 0 3px;
     }
-}
 
-/* ============================================
-   PRINT STYLES
-   ============================================ */
+    .Menu, div.Menu {
+        padding: 8px 10px;
+        font-size: 12px;
+        min-height: 32px;
+    }
 
-@media print {
-    .top-area,
-    .left-area,
-    .user-dropdown,
-    .custom-select-wrapper,
-    .separator,
-    .Search,
-    .Slidbar,
-    .slider-toggle {
-        display: none !important;
-    }
-    
-    .right-area {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .app-container {
-        height: auto;
-    }
-    
-    .main-content {
-        display: block;
-    }
-    
-    .card, .panel-card {
-        border: 1px solid var(--grid-color);
-        box-shadow: none;
-    }
-}
+    .Menu.active, div.Menu.active { padding: 8px 10px !important; }
 
-/* ============================================
-   ACCESSIBILITY & ANIMATIONS
-   ============================================ */
+    .SubMenu .Menu,
+    .SubMenu div.Menu {
+        padding: 6px 38px;
+        font-size: 11px;
+    }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 106, 0, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0);
-    }
-}
+    .SubMenu .Menu.active,
+    .SubMenu div.Menu.active { padding: 6px 38px !important; }
 
-.slider-toggle:hover {
-    animation: pulse 1.5s infinite;
+    .SubMenu::before { left: 18px; }
+
+    .slider-toggle { width: 36px; height: 36px; }
+    .slider-icon { width: 18px; height: 18px; }
 }
 
 .slider-toggle:focus-visible {
@@ -1917,29 +1894,13 @@ div.Menu:active {
     transform: scale(1.05);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .slider-toggle,
-    .slider-icon,
-    .left-area,
-    .left-area-inner,
-    .Menu,
-    .MenuB,
-    .menu-arrow,
-    .Search,
-    .dropdown-menu,
-    .custom-select {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-/* ============================================
-   CHECKBOX STYLES
-   ============================================ */
+/* ============================================================
+   FORM CONTROLS
+   ============================================================ */
 
 .DivCheckbox {
     display: block;
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
     padding: 0;
 }
@@ -1972,7 +1933,7 @@ div.Menu:active {
     position: relative;
     width: 52px;
     height: 26px;
-    background-color: var(--label-tertiary);
+    background-color: var(--background-main);
     border-radius: 40px;
     transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--inner-shadow-dark);
@@ -1994,7 +1955,7 @@ div.Menu:active {
 }
 
 .LabelCheckbox input[type="checkbox"]:checked + .Checkbox {
-    background-color: var(--background-logo);
+    background-color: var(--brand);
     box-shadow: var(--inner-shadow-dark);
 }
 
@@ -2008,13 +1969,14 @@ div.Menu:active {
     border-radius: 40px;
 }
 
-.LabelCheckbox .Checkbox:active::after {
-    width: 22px;
-}
+.LabelCheckbox .Checkbox:active::after { width: 22px; }
 
 a.ButtonB,
 .ButtonB {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     position: relative;
     padding: 12px 20px;
     color: var(--text-primary);
@@ -2046,20 +2008,18 @@ a.ButtonB::before,
 a.ButtonB:hover,
 .ButtonB:hover {
     background-color: transparent;
-    border-color: var(--background-logo-hover);
+    border-color: var(--background-main-hover);
     border-left: none;
     color: var(--text-primary);
 }
 
 a.ButtonB:hover::before,
 .ButtonB:hover::before {
-    background-color: var(--background-logo-hover);
+    background-color: var(--background-main-hover);
 }
 
 a.ButtonB:active,
-.ButtonB:active {
-    transform: scale(0.98);
-}
+.ButtonB:active { transform: scale(0.98); }
 
 a.ButtonB:focus-visible,
 .ButtonB:focus-visible {
@@ -2076,21 +2036,12 @@ a.ButtonB:disabled,
     pointer-events: none;
 }
 
-a.ButtonB,
-button.ButtonB {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
 .InputZ {
     background: var(--background-primary);
     color: var(--text-primary);
     font-size: 16px;
-    border: 0px;
-	width:100%;
+    border: 0;
+    width: 100%;
 }
 
 .DivTextarea {
@@ -2099,7 +2050,7 @@ button.ButtonB {
     border-bottom: 1px solid var(--border-tertiary);
     width: 100%;
     padding: 20px;
-    margin: 0px;
+    margin: 0;
 }
 
 .DivTextarea textarea {
@@ -2108,12 +2059,11 @@ button.ButtonB {
     font-family: var(--font-family-monospace);
     font-size: 16px;
     height: 120px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-/* Toggle Switch Styles - Brand Color #FF6A00 */
 .CheckboxToggle {
     position: relative;
     display: inline-block;
@@ -2152,12 +2102,16 @@ button.ButtonB {
 }
 
 .CheckboxToggle input:checked + span {
-    background-color: var(--background-logo);
+    background-color: var(--brand);
 }
 
 .CheckboxToggle input:checked + span:before {
     transform: translateX(26px);
 }
+
+/* ============================================================
+   VIEWS / CARDS
+   ============================================================ */
 
 .DivView {
     background-color: var(--background-secondary);
@@ -2189,9 +2143,7 @@ button.ButtonB {
     font-size: 12px;
 }
 
-.ViewA:hover {
-    background-color: var(--background-tertiary);
-}
+.ViewA:hover { background-color: var(--background-tertiary); }
 
 .ViewB {
     margin-left: auto;
@@ -2201,10 +2153,10 @@ button.ButtonB {
     flex-shrink: 0;
 }
 
+/* ============================================================
+   PAGE SEARCH
+   ============================================================ */
 
-
-
-/* Search Container - Full width with proper icon positioning */
 .SearchContainer {
     position: relative;
     width: 100%;
@@ -2212,15 +2164,14 @@ button.ButtonB {
     display: flex;
     justify-content: flex-end;
     box-sizing: border-box;
-	text-align:right;
+    text-align: right;
 }
 
-/* Search Input - Now 100% width of container, fully rounded */
 .SearchInput {
     width: 50%;
     min-width: 200px;
     background: var(--background-primary);
-    border: 1px solid #FF6A00;
+    border: 1px solid var(--background-main);
     border-radius: 999px;
     padding: 12px 50px 12px 20px;
     font-size: 1rem;
@@ -2234,32 +2185,27 @@ button.ButtonB {
     background: var(--header-background);
 }
 
-/* Search Icon - Properly aligned to the right inside input */
 .SearchContainer::after {
     content: "";
     position: absolute;
-    right: 8px; /* Adjusted for better alignment inside the rounded input */
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     width: 36px;
     height: 36px;
-    background: #FF6A00;
+    background: var(--background-main);
     border-radius: 50%;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d1117'%3E%3Cpath d='M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 18px;
     box-sizing: border-box;
 }
 
-
-
-
-
-
-
-
+/* ============================================================
+   CATEGORY / ICON GRID
+   ============================================================ */
 
 .CategoryWrapper {
     margin-bottom: 10px;
@@ -2274,6 +2220,7 @@ button.ButtonB {
     margin: 5px 0;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 10px;
     transition: all 0.2s ease;
 }
@@ -2285,6 +2232,7 @@ button.ButtonB {
 
 .CategoryArrow {
     display: inline-block;
+    order: 0;
     font-size: 14px;
     color: var(--border-tertiary);
     transition: transform 0.2s ease;
@@ -2293,23 +2241,11 @@ button.ButtonB {
 }
 
 .CategoryTitle {
+    order: 1;
     font-size: 14px;
     font-weight: 600;
     color: var(--text-primary);
-    flex: 1;
-}
-
-.CategoryHeader {
-    justify-content: flex-start;
-}
-
-.CategoryTitle {
     flex: 0 1 auto;
-    order: 1;
-}
-
-.CategoryArrow {
-    order: 0;
 }
 
 .CategoryContent {
@@ -2318,16 +2254,17 @@ button.ButtonB {
     transition: all 0.3s ease;
 }
 
-.IconHidden {
-    display: none !important;
-}
+.IconHidden { display: none !important; }
 
 .IconVisible {
     display: block !important;
     animation: fadeIn 0.3s ease;
 }
 
-/* Dropdown Button */
+/* ============================================================
+   DROPDOWN BUTTON
+   ============================================================ */
+
 .DropButton {
     background-color: var(--background-tertiary);
     color: var(--text-primary);
@@ -2351,7 +2288,6 @@ button.ButtonB {
     background-color: var(--button-secondary-pressed);
 }
 
-/* Dropdown Content Container */
 .DropdownButtonContent {
     display: none;
     position: absolute;
@@ -2364,7 +2300,6 @@ button.ButtonB {
     z-index: 1000;
 }
 
-/* Dropdown Links */
 .DropdownButtonContent a {
     color: var(--text-primary);
     padding: 12px 16px;
@@ -2376,9 +2311,7 @@ button.ButtonB {
     cursor: pointer;
 }
 
-.DropdownButtonContent a:last-child {
-    border-bottom: none;
-}
+.DropdownButtonContent a:last-child { border-bottom: none; }
 
 .DropdownButtonContent a:hover {
     background-color: var(--background-tertiary-hover);
@@ -2389,27 +2322,14 @@ button.ButtonB {
     background-color: var(--button-secondary-pressed);
 }
 
-/* Show the dropdown when open */
 .DropdownButtonContent.show {
     display: block;
     animation: fadeIn 0.2s ease;
 }
 
-/* Fade in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ============================================
-   CARD COMPONENTS
-   ============================================ */
+/* ============================================================
+   CARDS / MODALS
+   ============================================================ */
 
 .card {
     background: var(--background-secondary);
@@ -2446,10 +2366,6 @@ button.ButtonB {
     margin-top: 16px;
 }
 
-/* ============================================
-   MODAL / DIALOG STYLES
-   ============================================ */
-
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -2477,17 +2393,6 @@ button.ButtonB {
     animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .modal-header {
     padding: 20px 24px;
     border-bottom: 1px solid var(--separator);
@@ -2511,9 +2416,7 @@ button.ButtonB {
     transition: color 0.2s ease;
 }
 
-.modal-close:hover {
-    color: var(--text-primary);
-}
+.modal-close:hover { color: var(--text-primary); }
 
 .modal-body {
     padding: 20px 24px;
@@ -2530,14 +2433,11 @@ button.ButtonB {
     gap: 12px;
 }
 
-/* ============================================
-   TOOLTIP STYLES
-   ============================================ */
+/* ============================================================
+   TOOLTIP / BADGE / ALERT / PROGRESS
+   ============================================================ */
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
+.tooltip { position: relative; display: inline-block; }
 
 .tooltip .tooltip-text {
     visibility: hidden;
@@ -2575,10 +2475,6 @@ button.ButtonB {
     opacity: 1;
 }
 
-/* ============================================
-   BADGE / TAG STYLES
-   ============================================ */
-
 .badge {
     display: inline-flex;
     align-items: center;
@@ -2590,34 +2486,11 @@ button.ButtonB {
     color: var(--text-secondary);
 }
 
-.badge-primary {
-    background: var(--background-logo);
-    color: var(--text-primary);
-}
-
-.badge-success {
-    background: var(--green);
-    color: var(--text-primary);
-}
-
-.badge-warning {
-    background: var(--orange);
-    color: var(--text-primary);
-}
-
-.badge-error {
-    background: var(--red);
-    color: var(--text-primary);
-}
-
-.badge-info {
-    background: var(--blue);
-    color: var(--text-primary);
-}
-
-/* ============================================
-   ALERT / NOTIFICATION STYLES
-   ============================================ */
+.badge-primary { background: var(--background-main); color: var(--button-primary-text); }
+.badge-success { background: var(--green); color: var(--button-primary-text); }
+.badge-warning { background: var(--yellow); color: var(--button-primary-text); }
+.badge-error   { background: var(--red);   color: var(--text-primary); }
+.badge-info    { background: var(--blue);  color: var(--button-primary-text); }
 
 .alert {
     padding: 16px 20px;
@@ -2629,45 +2502,12 @@ button.ButtonB {
     animation: slideInRight 0.3s ease;
 }
 
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+.alert-success { background: rgba(63, 185, 80, 0.15); border-left: 4px solid var(--green);  color: var(--green); }
+.alert-warning { background: rgba(210, 153, 34, 0.15); border-left: 4px solid var(--yellow); color: var(--yellow); }
+.alert-error   { background: rgba(248, 81, 73, 0.15); border-left: 4px solid var(--red);    color: var(--red); }
+.alert-info    { background: rgba(88, 166, 255, 0.15); border-left: 4px solid var(--blue);  color: var(--blue); }
 
-.alert-success {
-    background: rgba(48, 209, 88, 0.15);
-    border-left: 4px solid var(--green);
-    color: var(--green);
-}
-
-.alert-warning {
-    background: rgba(255, 159, 10, 0.15);
-    border-left: 4px solid var(--orange);
-    color: var(--orange);
-}
-
-.alert-error {
-    background: rgba(255, 69, 58, 0.15);
-    border-left: 4px solid var(--red);
-    color: var(--red);
-}
-
-.alert-info {
-    background: rgba(10, 132, 255, 0.15);
-    border-left: 4px solid var(--blue);
-    color: var(--blue);
-}
-
-.alert-message {
-    flex: 1;
-    font-size: 14px;
-}
+.alert-message { flex: 1; font-size: 14px; }
 
 .alert-close {
     background: none;
@@ -2679,13 +2519,7 @@ button.ButtonB {
     transition: opacity 0.2s ease;
 }
 
-.alert-close:hover {
-    opacity: 1;
-}
-
-/* ============================================
-   PROGRESS BAR STYLES
-   ============================================ */
+.alert-close:hover { opacity: 1; }
 
 .progress {
     background: var(--progress-bar-background);
@@ -2718,44 +2552,22 @@ button.ButtonB {
     animation: progress-stripes 1s linear infinite;
 }
 
-@keyframes progress-stripes {
-    from {
-        background-position: 20px 0;
-    }
-    to {
-        background-position: 0 0;
-    }
-}
-
-/* ============================================
-   SPINNER / LOADING STATES
-   ============================================ */
-
 .spinner {
     display: inline-block;
     width: 20px;
     height: 20px;
     border: 2px solid var(--background-tertiary);
-    border-top-color: var(--background-logo);
+    border-top-color: var(--background-main);
     border-radius: 50%;
     animation: spin 0.6s linear infinite;
 }
 
-.spinner-sm {
-    width: 16px;
-    height: 16px;
-    border-width: 2px;
-}
+.spinner-sm { width: 16px; height: 16px; border-width: 2px; }
+.spinner-lg { width: 40px; height: 40px; border-width: 3px; }
 
-.spinner-lg {
-    width: 40px;
-    height: 40px;
-    border-width: 3px;
-}
-
-/* ============================================
-   BREADCRUMB STYLES
-   ============================================ */
+/* ============================================================
+   BREADCRUMB / SWITCH / RADIO
+   ============================================================ */
 
 .breadcrumb {
     display: flex;
@@ -2773,9 +2585,7 @@ button.ButtonB {
     transition: color 0.2s ease;
 }
 
-.breadcrumb-item:hover {
-    color: var(--border-tertiary);
-}
+.breadcrumb-item:hover { color: var(--border-tertiary); }
 
 .breadcrumb-item.active {
     color: var(--text-primary);
@@ -2787,10 +2597,6 @@ button.ButtonB {
     font-size: 12px;
 }
 
-/* ============================================
-   SWITCH / TOGGLE (Modern)
-   ============================================ */
-
 .switch {
     position: relative;
     display: inline-block;
@@ -2798,19 +2604,12 @@ button.ButtonB {
     height: 28px;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+.switch input { opacity: 0; width: 0; height: 0; }
 
 .switch-slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-color: var(--label-tertiary);
     transition: 0.3s;
     border-radius: 34px;
@@ -2828,28 +2627,15 @@ button.ButtonB {
     border-radius: 50%;
 }
 
-.switch input:checked + .switch-slider {
-    background-color: var(--background-logo);
-}
-
-.switch input:checked + .switch-slider:before {
-    transform: translateX(24px);
-}
+.switch input:checked + .switch-slider { background-color: var(--background-main); }
+.switch input:checked + .switch-slider:before { transform: translateX(24px); }
 
 .switch input:focus-visible + .switch-slider {
     outline: 2px solid var(--border-tertiary);
     outline-offset: 2px;
 }
 
-/* ============================================
-   RADIO BUTTON STYLES
-   ============================================ */
-
-.radio-group {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+.radio-group { display: flex; gap: 20px; flex-wrap: wrap; }
 
 .radio-label {
     display: flex;
@@ -2873,7 +2659,7 @@ button.ButtonB {
 }
 
 .radio-label input[type="radio"]:checked {
-    border-color: var(--background-logo);
+    border-color: var(--background-main);
     border-width: 5px;
 }
 
@@ -2886,14 +2672,11 @@ button.ButtonB {
     border-color: var(--border-tertiary);
 }
 
-/* ============================================
-   FILE INPUT STYLES
-   ============================================ */
+/* ============================================================
+   FILE INPUT
+   ============================================================ */
 
-.file-input {
-    position: relative;
-    display: inline-block;
-}
+.file-input { position: relative; display: inline-block; }
 
 .file-input input[type="file"] {
     position: absolute;
@@ -2927,65 +2710,35 @@ button.ButtonB {
     color: var(--label-secondary);
 }
 
-/* ============================================
-   ANIMATION UTILITIES
-   ============================================ */
+/* ============================================================
+   TRANSITIONS / UTILITIES
+   ============================================================ */
 
-.fade-enter {
-    opacity: 0;
-}
+.fade-enter       { opacity: 0; }
+.fade-enter-active { opacity: 1; transition: opacity 0.2s ease; }
+.fade-exit        { opacity: 1; }
+.fade-exit-active  { opacity: 0; transition: opacity 0.2s ease; }
 
-.fade-enter-active {
-    opacity: 1;
-    transition: opacity 0.2s ease;
-}
-
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit-active {
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.slide-enter {
-    transform: translateX(-100%);
-}
-
-.slide-enter-active {
-    transform: translateX(0);
-    transition: transform 0.3s ease;
-}
-
-.slide-exit {
-    transform: translateX(0);
-}
-
-.slide-exit-active {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
+.slide-enter       { transform: translateX(-100%); }
+.slide-enter-active { transform: translateX(0); transition: transform 0.3s ease; }
+.slide-exit        { transform: translateX(0); }
+.slide-exit-active  { transform: translateX(-100%); transition: transform 0.3s ease; }
 
 .text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
 
 .text-primary { color: var(--text-primary); }
 .text-secondary { color: var(--text-secondary); }
 .text-success { color: var(--green); }
-.text-warning { color: var(--orange); }
-.text-error { color: var(--red); }
-.text-info { color: var(--blue); }
+.text-warning { color: var(--yellow); }
+.text-error   { color: var(--red); }
+.text-info    { color: var(--blue); }
 
-.bg-primary { background: var(--background-primary); }
+.bg-primary   { background: var(--background-primary); }
 .bg-secondary { background: var(--background-secondary); }
-.bg-tertiary { background: var(--background-tertiary); }
-.bg-accent { background: var(--background-logo); }
+.bg-tertiary  { background: var(--background-tertiary); }
+.bg-accent    { background: var(--background-main); }
 
 .m-0 { margin: 0; }
 .m-1 { margin: 4px; }
@@ -3036,33 +2789,9 @@ button.ButtonB {
 .position-fixed { position: fixed; }
 .position-sticky { position: sticky; }
 
-/* ============================================
-   DARK MODE SPECIFIC ADJUSTMENTS
-   ============================================ */
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        /* Already configured for dark mode */
-    }
-}
-
-/* ============================================
-   HIGH CONTRAST MODE SUPPORT
-   ============================================ */
-
-@media (forced-colors: active) {
-    .slider-toggle,
-    .InputButton,
-    .Pages,
-    .PagesOver,
-    .Menu.active {
-        border: 2px solid currentColor;
-    }
-}
-
-/* ============================================
-   SELECTION STYLES
-   ============================================ */
+/* ============================================================
+   ACCESSIBILITY / SELECTION
+   ============================================================ */
 
 ::selection {
     background: var(--selected-text-background);
@@ -3074,8 +2803,10 @@ button.ButtonB {
     color: var(--selected-text-color);
 }
 
+/* ============================================================
+   RADIO ENHANCED
+   ============================================================ */
 
-/* Enhanced Radio Button Styles */
 .radio-group-enhanced {
     display: flex;
     flex-wrap: wrap;
@@ -3130,13 +2861,13 @@ button.ButtonB {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--background-logo);
+    background: var(--background-main);
     transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .radio-enhanced input[type="radio"]:checked + .radio-custom {
-    border-color: var(--background-logo);
-    background: rgba(255, 106, 0, 0.1);
+    border-color: var(--background-main);
+    background: rgba(88, 166, 255, 0.1);
 }
 
 .radio-enhanced input[type="radio"]:checked + .radio-custom::after {
@@ -3155,10 +2886,9 @@ button.ButtonB {
 }
 
 .radio-enhanced input[type="radio"]:checked ~ .radio-label-text {
-    color: var(--background-logo);
+    color: var(--background-main);
 }
 
-/* Compact layout for many options */
 .radio-group-compact {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, auto));
@@ -3168,20 +2898,9 @@ button.ButtonB {
     border-radius: 12px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ============================================================
+   ICON GRID (home / dashboard shortcuts)
+   ============================================================ */
 
 .Main {
     text-decoration: none;
@@ -3222,7 +2941,7 @@ button.ButtonB {
 
 .Main span {
     display: block;
-    color: var(--text-primary);
+    color: #58a6ff;
     font-size: 12px;
     font-weight: 500;
     text-align: center;
@@ -3241,14 +2960,12 @@ button.ButtonB {
     -webkit-box-orient: vertical;
 }
 
-/* Focus state for accessibility */
 .Main:focus-visible {
     outline: 2px solid var(--keyboard-focus-indicator);
     outline-offset: 4px;
     border-radius: 8px;
 }
 
-/* Container grid for better spacing */
 .DivIcon {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 140px));
@@ -3257,42 +2974,339 @@ button.ButtonB {
     padding: 20px;
 }
 
-/* Animation */
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .DivIcon {
         grid-template-columns: repeat(auto-fill, minmax(100px, 120px));
         gap: 25px 20px;
     }
-    
+
     .Icon {
         width: 70px;
         height: 70px;
     }
-    
+
     .Icon img {
         width: 32px;
         height: 32px;
     }
-    
+
     .Main span {
         font-size: 11px;
         max-width: 100px;
         margin-top: 12px;
     }
-    
+
     .Main {
         margin-bottom: 20px;
     }
+}
+
+.folder-selector-wrapper {
+    background: #0d1117;
+    overflow: hidden;
+    border-top: 1px solid #30363d;
+    border-bottom: 1px solid #30363d;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #e6edf3;
+}
+
+/* Container for folder tree */
+.folder-tree-list {
+    padding: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    background: #0d1117;
+    scrollbar-width: thin;
+    scrollbar-color: #30363d rgba(0, 0, 0, 0);
+}
+
+/* Scrollbar styling */
+.folder-tree-list::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.folder-tree-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+}
+
+.folder-tree-list::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.folder-tree-list::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+}
+
+.folder-tree {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.folder-tree ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.folder-item {
+    margin: 1px 0;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   Folder label — inactive blue / hover blue / active white
+   (matches .sidebar a in index.php exactly)
+   ============================================================ */
+
+.folder-label {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    gap: 8px;
+    color: #58a6ff;                      /* inactive — blue */
+    background: transparent;
+    position: relative;
+    font-size: 14px;                     /* matches .sidebar a */
+    font-weight: 500;
+}
+
+.folder-label:hover {
+    background: #161b22;                 /* hover — same blue, bg changes */
+    color: #58a6ff;
+}
+
+.folder-label:hover .folder-name {
+    color: #58a6ff;
+}
+
+.folder-label:active {
+    transform: none;
+}
+
+.folder-label.active {
+    background: #1f6feb33;               /* active — blue tint bg */
+    color: #e6edf3;                      /* active — white text */
+    font-weight: 600;
+}
+
+.folder-label.active .folder-name {
+    color: #e6edf3;
+}
+
+/* ============================================================
+   SVG Icon colors
+   ============================================================ */
+
+.folder-icon svg {
+    color: #58a6ff;
+    stroke: #58a6ff;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.folder-toggle svg {
+    color: #58a6ff;
+    stroke: #58a6ff;
+}
+
+/* Active folder icons follow the active text color */
+.folder-label.active .folder-icon svg,
+.folder-label.active .folder-toggle svg {
+    color: #e6edf3;
+    stroke: #e6edf3;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+/* ============================================================
+   Folder toggle button
+   ============================================================ */
+
+.folder-toggle {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.folder-toggle:hover {
+    transform: scale(1.1);
+}
+
+.folder-toggle.expanded {
+    transform: rotate(90deg);
+}
+
+.folder-toggle.expanded:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+.folder-icon {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.folder-name {
+    flex: 1;
+    font-size: 14px;                     /* matches .sidebar a */
+    font-weight: inherit;
+    word-break: break-word;
+    line-height: 1.5;
+    transition: color 0.15s ease;
+    color: #58a6ff;                      /* inherited blue */
+}
+
+/* ============================================================
+   Loading animation
+   ============================================================ */
+
+.folder-loading {
+    text-align: center;
+    padding: 30px 20px;
+    color: #8b949e;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.folder-loading::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid #30363d;
+    border-top-color: #58a6ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Error message
+   ============================================================ */
+
+.folder-error {
+    background: #f85149;
+    color: #ffffff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 12px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: shake 0.3s ease;
+}
+
+.folder-error::before {
+    content: "⚠️";
+    font-size: 14px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-4px); }
+    75%      { transform: translateX(4px); }
+}
+
+/* ============================================================
+   Empty state
+   ============================================================ */
+
+.folder-empty {
+    text-align: center;
+    padding: 30px 20px;
+    color: #8b949e;
+    font-size: 13px;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.folder-empty::before {
+    content: "📁";
+    font-size: 32px;
+    opacity: 0.5;
+    font-style: normal;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .folder-tree-list {
+        max-height: 200px;
+        padding: 6px;
+    }
+
+    .folder-label {
+        padding: 7px 10px;
+    }
+
+    .folder-name {
+        font-size: 13px;
+    }
+
+    .folder-tree ul {
+        padding-left: 16px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .folder-label {
+        padding: 10px 12px;
+    }
+
+    .folder-toggle {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Focus visible for accessibility */
+.folder-label:focus-visible {
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Selection color */
+::selection {
+    background: rgba(88, 166, 255, 0.3);
+    color: #e6edf3;
+}
+
+/* Folder tree container hover */
+.folder-tree-list:hover {
+    scrollbar-color: #484f58 rgba(0, 0, 0, 0);
 }

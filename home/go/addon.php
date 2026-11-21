@@ -37,8 +37,7 @@ if ($Primary==1 and $AddonDomain!="")
 }
 elseif ($AddonDomain!="")
 {
-	$Sql = "select AddonNo from Site where Domain='$Domain'";
-	$Result = SQL($Sql);
+	$Result = SQL("select AddonNo from Site where Domain=?", [$Domain]);
 	foreach ($Result as $Row)
 	{
 		if ($Row['AddonNo']<=0)
@@ -53,7 +52,8 @@ elseif ($AddonDomain!="")
 
 	if ($Password=="") {$Password=time();}
 
-	$Error=SSH ("/usr/bin/sudo /go/create -d $AddonDomain -u $AddonDomain -p $Password -w $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
+	$Owner=$Domain;
+	$Error=SSH ("/usr/bin/sudo /go/create --domain '$AddonDomain' --username '$AddonDomain' --password '$Password' --documentroot '$DocumentRoot' --fullname '$FullName' --mobile '$Mobile' --email '$Email' --packageid '$PackageID' --diskspace '$DiskSpace' --bandwidth '$Bandwidth' --inode '$Inode' --ftpno '$FTPNo' --emailno '$EmailNo' --databaseno '$DatabaseNo' --subdomainno '$SubDomainNo' --aliasno '$AliasNo' --addonno '$AddonNo' --shell '$Shell' --jailedshell '$JailedShell' --timezone '$Timezone' --permission '$Permission' --description '$Description' --phpversion '$PHPVersion' --smtphost '$SMTPHost' --smtpuser '$SMTPUser' --smtppass '$SMTPPass' --smtpport '$SMTPPort' --sslcertificate '$SSLCertificate' --sslredirect '$SSLRedirect' --bot '$Bot' --proxy '$Proxy' --ftpstatus '$FTPStatus' --ftpupload '$FTPUpload' --ftpdownload '$FTPDownload' --ftpdelete '$FTPDelete' --backup '$Backup' --backupstamp '$BackupStamp' --expireson '$ExpiresOn' --domainexpireson '$DomainExpiresOn' --mailttl '$MailTTL' --browsercachettl '$BrowserCacheTTL' --apiignore '$APIIgnore' --userid '$UserID' --owner '$Owner' --timestamp '$TimeStamp' --skeleton '$Skeleton'",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 	echo Error("$Error");
 
 }
@@ -76,8 +76,7 @@ elseif ($AddonDomain!="")
 	<select name='Domain' class=Select>
 	";
 	
-	$Sql = "select * from Site where Trash=0 and Owner='' $SearchSql order by Domain";
-	$Result = SQL($Sql);
+	$Result = SQL("select * from Site where Trash=0 and Owner='' $SearchSql order by Domain");
 	foreach ($Result as $Row)
 	{
 	echo "
@@ -89,8 +88,8 @@ elseif ($AddonDomain!="")
 	</select>
 	</div>
 	
-	<div class='DivInput {$Dir}DivInput'>{$LNG['PasswordOptional']}<br>
-	<input type='text' name='Password' maxlength=100 class=InputText size=40>
+	<div class='DivInput {$Dir}DivInput'>{$LNG['Password']}<br>
+	<input type='password' name='Password' id='Password' pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$' title='Must contain at least one number, one uppercase letter, one lowercase letter, and be at least 8 characters long' autocomplete='new-password' required maxlength=100 class=InputText> <span onclick=\"GeneratePassword('Password')\" style='color: var(--blue);cursor:pointer'>Generate Password</span>
 	</div>
 	
 	<div id=DivSubmit class=DivSubmit>
@@ -146,12 +145,12 @@ elseif ($AddonDomain!="")
 		";
 
 		$Table="Site";$Field="Owner!=''";
-		$DefaultSortBy="Domain";
+		$DefaultOrderBy="Domain";
 		$DefaultDirection="ASC";
 		include "include/sql.php";
 
 		$X=0;
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{
 		$ID=$Row['SiteID'];

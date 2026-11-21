@@ -49,23 +49,23 @@ if ($Action=="Purge" and $Domain!="")
 	<tr>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 	
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=CacheTTL')\">Cache TTL</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=CacheTTL')\">Cache TTL</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=CacheLength')\">Length</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=CacheLength')\">Length</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=CacheExclude')\">URL Exclude</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=CacheExclude')\">URL Exclude</a>
     </TH>
 
     <TH align='$DAlign' width='10%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=CacheActive')\">Active</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=CacheActive')\">Active</a>
     </TH>
 	
     <TH align='$DAlign' width='10%'>
@@ -78,12 +78,12 @@ if ($Action=="Purge" and $Domain!="")
 	";
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
     
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$ID=$Row['SiteID'];
@@ -158,9 +158,9 @@ echo <<<HTML
 <div class='DropdownButton'>
     <button type="button" onclick="DropdownButton('Purge{$ID}', event)" class='DropButton'>Purge Cache</button>
     <div id='Purge{$ID}' class='DropdownButtonContent'>
-        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=1&SortBy={$SortBy}&Page={$Page}')">Last 24 hours</a>
-        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=7&SortBy={$SortBy}&Page={$Page}')">Last 7 days</a>
-        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=0&SortBy={$SortBy}&Page={$Page}')">All</a>
+        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=1&OrderBy={$OrderBy}&Page={$Page}')">Last 24 hours</a>
+        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=7&OrderBy={$OrderBy}&Page={$Page}')">Last 7 days</a>
+        <a href="javascript:Load('{$CurrentFileName}?Action=Purge&SiteID={$SiteID}&Domain={$Domain}&MTime=0&OrderBy={$OrderBy}&Page={$Page}')">All</a>
     </div>
 </div>
 HTML;

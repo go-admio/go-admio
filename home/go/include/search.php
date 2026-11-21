@@ -6,12 +6,26 @@ $FieldNameString=Column($Table,"2",$SearchFor,"like");
 
 if ($SearchSql=="")
 {
-	$Sql = "select * from $Table where $FieldNameString order by $SortBy $Direction LIMIT $FromRecord,$PageNo";
-	
+	if ($GroupBy=="")
+	{
+	$SQL="select * from $Table where $FieldNameString order by $OrderBy $Direction LIMIT $FromRecord,$PageNo";
+	}
+	else
+	{
+	$SQL="select * from $Table where $FieldNameString GROUP BY $GroupBy order by $OrderBy $Direction LIMIT $FromRecord,$PageNo";
+	}
 }
 else
 {
-	$Sql = "select * from $Table where ($FieldNameString) $SearchSql order by $SortBy $Direction LIMIT $FromRecord,$PageNo";
+	if ($GroupBy=="")
+	{
+	$SQL="select * from $Table where ($FieldNameString) $SearchSql order by $OrderBy $Direction LIMIT $FromRecord,$PageNo";
+	}
+	else
+	{
+	$SQL="select * from $Table where ($FieldNameString) $SearchSql GROUP BY $GroupBy order by $OrderBy $Direction LIMIT $FromRecord,$PageNo";
+	}
+
 }
 
 ?>

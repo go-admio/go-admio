@@ -64,7 +64,7 @@ if ($ControlScrolling == "") {
 }
 
 // ---- Authentication check (same as original) ----
-$Result = SQL("select * from Mail where Email='{$_SESSION['SessionEmail']}' and Pass='{$_SESSION['SessionEmailPass']}'");
+$Result = SQL("select * from Mail where Email=? and Pass=?", [$_SESSION['SessionEmail'], $_SESSION['SessionEmailPass']]);
 $Success = 0;
 foreach ($Result as $Row) 
 {
@@ -98,9 +98,9 @@ if (stristr($_SESSION['SessionEmail'], "."))
 
 // ---- Pagination and sorting (original) ----
 $PageNo = 20;
-$SortBy = $_REQUEST['SortBy'];
+$OrderBy = $_REQUEST['OrderBy'];
 $Direction = $_REQUEST['Direction'];
-if ($SortBy == "") $SortBy = "Email";
+if ($OrderBy == "") $OrderBy = "Email";
 if ($Direction == "") $Direction = "ASC";
 if ($Page == "") $Page = 1;
 $FromRecord = ($Page - 1) * $PageNo;
@@ -163,8 +163,7 @@ $FromRecord = ($Page - 1) * $PageNo;
 			$Pass = trim($_REQUEST['Pass']);
 			$Email = "$User@$Domain";
 
-			$Sql = "select Email from Mail where Email='$Email'";
-			$Result = SQL($Sql);
+            $Result = SQL("select Email from Mail where Email=?", [$Email]);
 			foreach ($Result as $Row) 
 			{
 				echo Error("Email $Email already exists.");
@@ -188,7 +187,7 @@ $FromRecord = ($Page - 1) * $PageNo;
 		}
 
 $X = 0;
-$Result = SQL("select * from Mail where Trash=0 and Username='{$_SESSION['SessionWebsiteUsername']}' order by $SortBy $Direction");
+$Result = SQL("select * from Mail where Trash=0 and Username=? order by $OrderBy $Direction", [$_SESSION['SessionWebsiteUsername']]);
 $RowsNo = count($Result);
 ?>
 	
@@ -241,8 +240,8 @@ $RowsNo = count($Result);
         <table class="accounts-table">
             <thead>
                 <tr>
-                    <th><a href="?SortBy=Email" style="color:#9bb8da;">Email</a></th>
-                    <th><a href="?SortBy=TimeStamp" style="color:#9bb8da;">Created Date</a></th>
+                    <th><a href="?OrderBy=Email" style="color:#9bb8da;">Email</a></th>
+                    <th><a href="?OrderBy=TimeStamp" style="color:#9bb8da;">Created Date</a></th>
                     <th style="text-align:right;">Actions</th>
                 </tr>
             </thead>

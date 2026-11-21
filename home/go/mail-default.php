@@ -5,7 +5,7 @@ $Buttons="";
 include "title.php";
 	
 Echo "
-<div class=NavigatorInfo>
+<div class='NavigatorInfo No'>
 <img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>Catch any email that is sent to an invalid email address for your domain.
 </div>
 ";
@@ -42,7 +42,7 @@ include "access.php";
 	if (stristr($_SESSION['SessionDomain'],"."))
 	{
 
-		$Result = SQL("select Email from Mail where DefaultAddress=1 and Domain='{$_SESSION['SessionDomain']}'");
+		$Result = SQL("select Email from Mail where DefaultAddress=1 and Domain=?", [$_SESSION['SessionDomain']]);
 		foreach ($Result as $Row)
 		{
 		$Email=$Row['Email'];
@@ -60,7 +60,7 @@ include "access.php";
 		else
 		{
 
-			$Result = SQL("select Email from Mail where DefaultAddress=1 and Domain='$Domain'");
+			$Result = SQL("select Email from Mail where DefaultAddress=1 and Domain=?", [$Domain]);
 			foreach ($Result as $Row)
 			{
 			$Email=$Row['Email'];
@@ -86,36 +86,26 @@ include "access.php";
 		{
 		$Domains[]=$Row['Domain'];
 		}
-				
-		if (is_array($Domains))
+					
+		sort($Domains);
+		
+		echo "
+		<select name='Domain' id='Domain' onchange='DefaultEmail()' class=Select>
+		";
+		
+		foreach ($Domains as $Domain) 
 		{
-			
-			sort($Domains);
-			
-			echo "
-			<select name='Domain' id='Domain' onchange='DefaultEmail()' class=Select>
-			";
-			
-			foreach ($Domains as $Domain) 
+			if ($Domain==$_REQUEST['Domain'])
 			{
-				if ($Domain==$_REQUEST['Domain'])
-				{
-				echo "<option value='$Domain' selected>$Domain</option>";
-				}
-				else
-				{
-				echo "<option value='$Domain'>$Domain</option>";
-				}
+			echo "<option value='$Domain' selected>$Domain</option>";
 			}
+			else
+			{
+			echo "<option value='$Domain'>$Domain</option>";
+			}
+		}
 
-			echo "</select>";
-			
-		}
-		else
-		{
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-		exit;
-		}
+		echo "</select>";
 		
 	echo "
 	</div>

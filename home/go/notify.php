@@ -25,30 +25,29 @@ if ($Action!="")
 
 	if ($Action=="EnableEmail")
 	{
-		SQL("UPDATE Notify set Email='1' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Email='1' where NotifyID=?", [$NotifyID]);
 	}
 	elseif ($Action=="DisableEmail")
 	{
-		SQL("UPDATE Notify set Email='0' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Email='0' where NotifyID=?", [$NotifyID]);
 	}
 	
-
 	if ($Action=="EnableWhatsapp")
 	{
-		SQL("UPDATE Notify set Whatsapp='1' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Whatsapp='1' where NotifyID=?", [$NotifyID]);
 	}
 	elseif ($Action=="DisableWhatsapp")
 	{
-		SQL("UPDATE Notify set Whatsapp='0' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Whatsapp='0' where NotifyID=?", [$NotifyID]);
 	}
 	
 	if ($Action=="EnableMissed")
 	{
-		SQL("UPDATE Notify set Missed='1' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Missed='1' where NotifyID=?", [$NotifyID]);
 	}
 	elseif ($Action=="DisableMissed")
 	{
-		SQL("UPDATE Notify set Missed='0' where NotifyID='$NotifyID'");
+		SQL("UPDATE Notify set Missed='0' where NotifyID=?", [$NotifyID]);
 	}
 	
 	if ($Keyword=="SSH Login")
@@ -71,23 +70,23 @@ if ($Action!="")
 	<tr>
 	
     <TH width='60%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Type&Direction=ASC')\">{$LNG['Type']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Type&Direction=ASC')\">{$LNG['Type']}</a>
 	</TH>
 	
     <TH width='10%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Alert&Direction=DESC')\">{$LNG['Alerts']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Alert&Direction=DESC')\">{$LNG['Alerts']}</a>
 	</TH>
 	
     <TH align='center' width='10%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Email&Direction=DESC')\">{$LNG['Email']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Email&Direction=DESC')\">{$LNG['Email']}</a>
     </TH>
 
     <TH align='center' width='10%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Whatsapp&Direction=DESC')\">{$LNG['Whatsapp']}</a> 
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Whatsapp&Direction=DESC')\">{$LNG['Whatsapp']}</a> 
     </TH>
 	
     <TH align='center' width='10%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Missed&Direction=DESC')\">{$LNG['MissedCall']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Missed&Direction=DESC')\">{$LNG['MissedCall']}</a>
     </TH>
 
 	</tr>
@@ -96,12 +95,12 @@ if ($Action!="")
 	";
 		
 	$Table="Notify";$Field="NotifyID>0";
-	$DefaultSortBy="Alert";
+	$DefaultOrderBy="Alert";
 	$DefaultDirection="DESC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$ID=$Row['NotifyID'];

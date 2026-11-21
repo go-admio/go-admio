@@ -64,7 +64,7 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 		$NewVersion=Version($Latest);
 		if (stristr($NewVersion,"."))
 		{
-		echo "<div class=NavigatorInfo id=Update><img src='theme/{$_SESSION['SessionTheme']}/image/update.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['ANewVersion']} $NewVersion {$LNG['IsAvailable']}. <a href='javascript:Update();' class=Action>{$LNG['UpdateNow']}</a></div>";
+		echo "<div class='NavigatorInfo No' id=Update><img src='theme/{$_SESSION['SessionTheme']}/image/update.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>{$LNG['ANewVersion']} $NewVersion {$LNG['IsAvailable']}. <a href='javascript:Update();' class=Action>{$LNG['UpdateNow']}</a></div>";
 		}
 	}
 	elseif ($_SESSION['SessionTIP']!=1)
@@ -103,7 +103,7 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 			$TIP=Lang($TIP).". <a href=\"javascript:Load('schedule.php')\" class=Action>{$LNG['CreateScheduledBackup']}</a>";
 			}
 
-			echo "<div class=NavigatorInfo id=Update><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>$TIP</div>";		
+			echo "<div class='NavigatorInfo No' id=Update><img src='theme/{$_SESSION['SessionTheme']}/image/info.svg' height=24 style='vertical-align:middle;padding-$OAlign:8px'>$TIP</div>";		
 		}
 	
 	
@@ -117,15 +117,15 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 		}
 		else
 		{
-		$ShowIPv6="<span onclick=\"Load('home.php?EnableIPv6=1')\" style='cursor:pointer'>Enable IPv6</span>";
+		$ShowIPv6="<span onclick=\"Load('home.php?EnableIPv6=1')\" style='color: var(--blue);cursor:pointer'>Enable IPv6</span>";
 		}
 	}
 	else
 	{
-	$ShowIPv6="<span title='Click to Copy' onclick=\"Copy('$IPv6')\">IPv6: $IPv6</span> | <span onclick=\"Load('home.php?DisableIPv6=1')\" style='cursor:pointer'>Disable IPv6</span>";
+	$ShowIPv6="<span title='Click to Copy' onclick=\"Copy('$IPv6')\">IPv6: $IPv6</span> | <span onclick=\"Load('home.php?DisableIPv6=1')\" style='color: var(--blue);cursor:pointer'>Disable IPv6</span>";
 	}
 
-	echo "<div class=UNavigator>Hostname: $Hostname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OS: $OS $OSVersion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Web Server: $WS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span title='Click to Copy' onclick=\"Copy('$IPv4')\">IPv4: $IPv4</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ShowIPv6</div>";		
+	echo "<div class='UNavigator No'>Hostname: $Hostname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OS: $OS $OSVersion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Web Server: $WS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span title='Click to Copy' onclick=\"Copy('$IPv4')\">IPv4: $IPv4</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ShowIPv6</div>";		
 	
 
 
@@ -134,17 +134,17 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 if ($_SESSION['SessionType']=="Root")
 {
 $ServiceSql="Service!=4";
-$SortBy="Sort";
+$OrderBy="Sort";
 }
 elseif ($_SESSION['SessionType']=="Reseller")
 {
     $ServiceSql="Service in (2,3)";
-	$SortBy="Sort";
+	$OrderBy="Sort";
 }
 elseif ($_SESSION['SessionType']=="Website")
 {
     $ServiceSql="Service>=3";
-	$SortBy="Priority,Sort";
+	$OrderBy="Priority,Sort";
 }
 
 if ($_SESSION['SessionView']!="User" and $_SESSION['SessionView']!="Mobile")
@@ -156,7 +156,7 @@ if ($_SESSION['SessionView']!="User" and $_SESSION['SessionView']!="Mobile")
 
 	$X=0;
 	
-	$Result = SQL("select * from Control where $ServiceSql group by ControlMenu order by $SortBy");
+	$Result = SQL("select * from Control where $ServiceSql group by ControlMenu order by $OrderBy");
 	foreach ($Result as $Row)
 	{
 	$X++;
@@ -187,18 +187,15 @@ else
 
 }
 
-
-
-
-if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsername], true))
+if ($_SESSION['SessionType']=="Root")
 {
 
 	echo "
-	<div class=DivChart>
+	<div class='DivChart No'>
 	
 		<div class=Chart title='$HardDiskInfo'> 
 		
-		<span class=ChartTitle>{$LNG['DiskUsage']}</span>
+		<span class='menu-title'>{$LNG['DiskUsage']}</span>
 		<br>
 			<center>
 			<div class='progress-circle progress-$ServerDiskPercent'><span>$ServerDiskPercent</span></div>  
@@ -209,7 +206,7 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 
 		<div class=Chart title='Swap: $Swap\nSwappiness: $Swappiness'> 
 		
-		<span class=ChartTitle>{$LNG['MemoryUsage']}</span>
+		<span class='menu-title'>{$LNG['MemoryUsage']}</span>
 		<br>
 			<center>
 		
@@ -227,7 +224,7 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 		
 		<div class=Chart> 
 		
-		<span class=ChartTitle>{$LNG['ServerLoad']}</span>
+		<span class='menu-title'>{$LNG['ServerLoad']}</span>
 		<br>
 			<center>
 		
@@ -245,7 +242,7 @@ if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUserna
 }
 elseif ($_SESSION['SessionType']=="Website")
 {
-    $Result = SQL("select * from Site where Username='{$_SESSION['SessionUsername']}'",60);
+    $Result = SQL("select * from Site where Username=?", [$_SESSION['SessionUsername']], 60);
     foreach ($Result as $Row)
     {	
 		$ExpiresOn = date("D j M Y", strtotime($Row['ExpiresOn']));
@@ -302,7 +299,7 @@ elseif ($_SESSION['SessionType']=="Website")
 	$FTPs=RowCount("select * from Ftp where Username='{$_SESSION['SessionUsername']}'");
 	$Databases=RowCount("select * from Mysql where Username='{$_SESSION['SessionUsername']}'");
 
-    $Result = SQL("select sum(Size) as MySQLSize from Mysql where Username='{$_SESSION['SessionUsername']}'");
+    $Result = SQL("select sum(Size) as MySQLSize from Mysql where Username=?", [$_SESSION['SessionUsername']]);
     foreach ($Result as $Row)
     {	
 		$MySQLSize=FormatSize($Row['MySQLSize']);
@@ -328,7 +325,7 @@ elseif ($_SESSION['SessionType']=="Website")
 	
 		<div class=Chart> 
 		
-		<span class=ChartTitle>{$LNG['DiskUsage']}</span>
+		<span class='menu-title'>{$LNG['DiskUsage']}</span>
 		<br>
 			<center>
 			<div class='progress-circle progress-$DiskSpacePercent'><span>$DiskSpacePercent</span></div>  
@@ -342,7 +339,7 @@ elseif ($_SESSION['SessionType']=="Website")
 
 		<div class=Chart> 
 		
-		<span class=ChartTitle>Bandwidth</span>
+		<span class='menu-title'>Bandwidth</span>
 		<br>
 			<center>
 		

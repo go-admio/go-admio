@@ -25,8 +25,8 @@ $Domain="-";
 }
 
 Echo "
-<div class=NavigatorInfo>
-To access Terminal directly, navigate to <a href='http://$Domain:2222' target='_blank'>http://$IPv4:2222</a></span>
+<div class='NavigatorInfo No'>
+To access Terminal directly, navigate to <a href='http://$Domain:22222' target='_blank'>http://$IPv4:22222</a></span>
 </div>
 ";
 
@@ -37,16 +37,12 @@ $SSHFontSize=$_REQUEST['SSHFontSize'];
 
 if ($SSHFontSize!="")
 {
-	$Sql = "UPDATE Config Set SSHFontSize='$SSHFontSize' where ConfigID=1";
-	$Result = SQL($Sql);
+	$Result = SQL("UPDATE Config Set SSHFontSize=? where ConfigID=1", [$SSHFontSize]);
 }
-
 
 if ($SSH!="")
 {
-	$Sql = "UPDATE Config Set SSH='$SSH' where ConfigID=1";
-	$Result = SQL($Sql);
-
+	$Result = SQL("UPDATE Config Set SSH=? where ConfigID=1", [$SSH]);
 }
 
 
@@ -195,11 +191,11 @@ if ($SSH!="")
 
 	if (strpos($_SERVER['SERVER_NAME'],"go.") === 0)
 	{
-	echo "<input type='button' value='Connect using SSH' class=InputButton onclick=\"window.open('https://root:{$_SESSION['SessionShellPassword']}@$Domain:2222')\">";
+	echo "<input type='button' value='Connect using SSH' class=InputButton onclick=\"window.open('https://root:{$_SESSION['SessionShellPassword']}@$Domain:22222')\">";
 	}
 	else
 	{
-	echo "<input type='button' value='Connect using SSH' class=InputButton onclick=\"window.open('http://root:{$_SESSION['SessionShellPassword']}@$IPv4:2222')\">";		
+	echo "<input type='button' value='Connect using SSH' class=InputButton onclick=\"window.open('http://root:{$_SESSION['SessionShellPassword']}@$IPv4:22222')\">";		
 	}
 	
 	echo "

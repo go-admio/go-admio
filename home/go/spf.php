@@ -1,7 +1,4 @@
 <?php
-
-
-
 include "navigator.php";
 include "no.php";
 $Buttons="";

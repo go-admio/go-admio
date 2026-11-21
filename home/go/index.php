@@ -99,7 +99,7 @@ if ($ControlScrolling=="")
 	$ControlScrolling="no";
 }
 
-if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and $Theme!="")
+if ($_SESSION['SessionType']!="")
 {
 
 	if ($_SERVER['REQUEST_METHOD']=="POST")
@@ -128,9 +128,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 		exit;
 	}
 
-
-	$Sql = "select Username from Site where Username='{$_SESSION['SessionUsername']}'";
-	$Result = SQL($Sql);
+	$Result = SQL("select Username from Site where Username=?", [$_SESSION['SessionUsername']]);
 	foreach ($Result as $Row)
 	{
 	$SiteExists=1;
@@ -155,17 +153,14 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 		if ($View=="") {$View="User";}
 	
 		// Site Access
-		$Result = SQL("select * from Site where Username='{$_SESSION['SessionUsername']}' and Password='{$_SESSION['SessionPassword']}'");
+		$Result = SQL("select * from Site where Username=? and Password=?", [$_SESSION['SessionUsername'], $_SESSION['SessionPassword']]);
 		foreach ($Result as $Row)
 		{
 			$Success=1;
 			
 			$_SESSION['SessionUsername']=$Row['Username'];
 			$_SESSION['SessionDomain']=$Row['Domain'];
-			$_SESSION['SessionFullName']=$Row['FullName'];
-						
-			$_SESSION['SessionUserGroup']=1;
-	
+							
 			$_SESSION['SessionSSHUsername']=$SSHUsername;
 			$_SESSION['SessionSSHPassword']=$SSHPassword;
 
@@ -174,23 +169,17 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 	}
 	else
 	{
-		
-		if (StartsWith(getcwd(),"/usr/local/goadmio"))
-		{
 		// Reseller
-	
-			$Result = SQL("select * from User where Username='{$_SESSION['SessionUsername']}' and Password='{$_SESSION['SessionPassword']}'");
-			foreach ($Result as $Row)
-			{
-				$Success=1;
-				
-				$_SESSION['SessionSSHUsername']=$SSHUsername;
-				$_SESSION['SessionSSHPassword']=$SSHPassword;
-				
-			}
+
+		$Result = SQL("select * from User where Username=? and Password=?", [$_SESSION['SessionUsername'], $_SESSION['SessionPassword']]);
+		foreach ($Result as $Row)
+		{
+			$Success=1;
+			
+			$_SESSION['SessionSSHUsername']=$SSHUsername;
+			$_SESSION['SessionSSHPassword']=$SSHPassword;
 			
 		}
-		
 	}
 	
 	If ($Success!=1)
@@ -199,10 +188,9 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 
 		session_unset();
 		session_destroy();
-		unset($_SESSION['SessionUsername'],$_SESSION['SessionUserID'],$_SESSION['SessionPassword'],$_SESSION['SessionUserGroup'],$_SESSION['SessionFullName'],$_SESSION['SessionGender'],$_SESSION['SessionBirthDate'],$_SESSION['SessionAge'],$_SESSION['SessionRegisterDate'],$_SESSION['SessionLastVisitDate'],$_SESSION['SessionLastVisitTime'],$_SESSION['SessionUserType'],$_SESSION['SessionCountryID']);
+		unset($_SESSION['SessionUsername'],$_SESSION['SessionUserID'],$_SESSION['SessionPassword'],$_SESSION['SessionType']);
 
 		setcookie ("CookiesUserID","",time() -3600);
-		setcookie ("CookiesUserGroup","",time() -3600);
 		setcookie ("CookiesUsername","",time() -3600);
 		setcookie ("CookiesPassword","",time() -3600);
 		setcookie ("CookiesUserType","",time() -3600);
@@ -232,12 +220,12 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 
 		<meta charset=\"utf-8\">
 		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
-		
-		<link rel=\"shortcut icon\" href=\"image/favicon.png\" type=\"image/x-icon\"/>
-		<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"image/apple-touch-icon-180x180.png\"/>
+		<meta name=\"robots\" content=\"noindex, nofollow\">
+
+
+		<link rel=\"icon\" href=\"image/favicon.svg\" type=\"image/svg+xml\" />
 
 		<link href=\"theme/{$_SESSION['SessionTheme']}/css/home.css?$JSVersion\" type=\"text/css\" rel=\"stylesheet\">
-		<link href=\"theme/{$_SESSION['SessionTheme']}/css/folder.css\" type=\"text/css\" rel=\"stylesheet\">
 
 		";
 
@@ -272,7 +260,12 @@ if ($_SERVER['REQUEST_METHOD']=="POST" or ($_SESSION['SessionUserGroup']>=1) and
 		<script src='include/js/jquery-ui/jquery-ui.js'></script>
 			
 		<script type='text/javascript' src=\"include/js/function.js?$JSVersion\"></script>
-		<script type='text/javascript' type='text/javascript' src='include/js/ajax.js'></script>
+		<script type='text/javascript' src='include/js/ajax.js'></script>
+
+
+		<link href=\"https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css\" rel=\"stylesheet\">
+		<script src=\"https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js\"></script>
+		
 
 		</head>
 
@@ -309,10 +302,9 @@ echo "<!DOCTYPE html>
 
 	<meta charset=\"utf-8\">
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0\"/>
+	<meta name=\"robots\" content=\"noindex, nofollow\">
 
-	<link rel=\"shortcut icon\" href=\"image/favicon.png\" type=\"image/x-icon\"/>
-	<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"image/apple-touch-icon-180x180.png\"/>
-
+	<link rel=\"icon\" href=\"image/favicon.svg\" type=\"image/svg+xml\" />
 
 </head>
 
@@ -360,7 +352,7 @@ echo "<!DOCTYPE html>
 		
 		Echo "<table  cellPadding=0 cellSpacing=9 bgcolor=$BGColor[4] width='100%'><TD align='$DAlign' width='100%'>";
 		
-		echo Error("Going to Control Panel .");
+		echo Error("Going to Control Panel.");
 		Echo "<META HTTP-EQUIV='Refresh' Content='2;URL=index.php'>";
 		
 	
@@ -369,7 +361,7 @@ echo "<!DOCTYPE html>
 	
 	echo "
 	<script type='text/javascript' src=\"include/js/function.js?$JSVersion\"></script>
-	<script type='text/javascript' type='text/javascript' src='include/js/ajax.js'></script>
+	<script type='text/javascript' src='include/js/ajax.js'></script>
 	";
 
 	if (stristr("|ar|fa|ps|sd|ug|ur|yi|","|{$_COOKIE['CookiesLng']}|"))

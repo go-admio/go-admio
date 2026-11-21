@@ -41,7 +41,7 @@ If ($Action=="BulkConvert")
 	for ($i=0 ;$i<$CountCheckList ; $i++)
 	{
 	
-		$Result = SQL("select * from Site where AddonID='{$CheckList[$i]}'");
+		$Result = SQL("select * from Site where AddonID=?", [$CheckList[$i] ?? '']);
 		foreach ($Result as $Row)
 		{
 
@@ -96,12 +96,12 @@ If ($Action=="BulkConvert")
 	
 
 	$Table="Site";$Field="Owner!=''";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$AddonID=$Row['AddonID'];

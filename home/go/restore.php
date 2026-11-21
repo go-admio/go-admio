@@ -71,9 +71,9 @@ include "access.php";
 	
 	$SortDir="ASC";
 
-    if ($SortBy=="")
+    if ($OrderBy=="")
     {
-    $SortBy="Domain";
+    $OrderBy="Domain";
     }
 
     if ($Page=="")

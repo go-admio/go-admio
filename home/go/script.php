@@ -1,6 +1,6 @@
 <?php
-
 include "nav.php";
+include "no.php";
 $Buttons="";
 include "title.php";
 
@@ -19,7 +19,7 @@ $Domain=$DomainArray[2];
 
 if ($_REQUEST['Directory']!="")
 {
-	$Result = SQL("select Username from Site where Domain='$Domain'");
+	$Result = SQL("select Username from Site where Domain=?", [$Domain]);
 	foreach ($Result as $Row)
 	{
 	$Username=$Row['Username'];
@@ -63,64 +63,56 @@ exit;
 	$Account['Username'][]=$Row['Username'];
 	}
 	
-	if (is_array($Account['Domain']))
+	array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
+	
+	$SelectDomain="<select name='WWWPath' id='WWWPath' onchange='Folder();MySQL();' class=Select>";
+	for ($E=0;$E<count($Account['Domain']);$E++)
 	{
-		array_multisort($Account['Domain'], SORT_ASC, SORT_STRING,$Account['Username'], SORT_NUMERIC, SORT_DESC);
-		
-		$SelectDomain="<select name='WWWPath' id='WWWPath' onchange='Folder();MySQL();' class=Select>";
-		for ($E=0;$E<count($Account['Domain']);$E++)
+		if ($DefaultDomain=="")
 		{
-			if ($DefaultDomain=="")
-			{
-			$DefaultDomain=$Account['Domain'][$E];
-			}
-		
-			if ($Account['Domain'][$E]==$_REQUEST['Domain'])
-			{
-			$SelectDomain.="<option value='/home/{$Account['Domain'][$E]}/www' selected>{$Account['Domain'][$E]}</option>";
-			}
-			else
-			{
-			$SelectDomain.="<option value='/home/{$Account['Domain'][$E]}/www'>{$Account['Domain'][$E]}</option>";
-			}
+		$DefaultDomain=$Account['Domain'][$E];
 		}
-		
-		$SelectDomain.="</select>";
-		
-		$DefaultDomainArray=explode(".",$DefaultDomain);
-		
-		$SelectVersion="<select name='ScriptID' id='ScriptID' class=Select>";
-		$Result = SQL("select * from Script where ScriptFile='$ScriptFile' order by ScriptID");
-		foreach ($Result as $Row)
+	
+		if ($Account['Domain'][$E]==$_REQUEST['Domain'])
 		{
-			if ($Row['ScriptID']==$ScriptID)
-			{
-			$SelectVersion.="<option value='{$Row['ScriptID']}' selected>{$Row['ScriptVersion']} ({$Row['ScriptLanguage']})</option>";
-			}
-			else
-			{
-			$SelectVersion.="<option value='{$Row['ScriptID']}'>{$Row['ScriptVersion']} ({$Row['ScriptLanguage']})</option>";
-			}
+		$SelectDomain.="<option value='/home/{$Account['Domain'][$E]}/www' selected>{$Account['Domain'][$E]}</option>";
 		}
-		
-		$SelectVersion.="</select>";
-		
-		$Name=$DefaultDomainArray[0]."_".$ScriptFile;
-		$Name=str_replace("-","",$Name);
-		
-		$User=$DefaultDomainArray[0]."_".$ScriptFile;
-		$User=str_replace("-","",$User);
-		
-		$Content=DesignCode($Content,"$Control (Content)");
-		echo $Content;
-
-	}
-	else
-	{
-		echo Error("There are no websites. <a href=\"javascript:Load('site.php')\" class=Action>{$LNG['CreateNewAccount']}</a>");
-		exit;
+		else
+		{
+		$SelectDomain.="<option value='/home/{$Account['Domain'][$E]}/www'>{$Account['Domain'][$E]}</option>";
+		}
 	}
 	
+	$SelectDomain.="</select>";
+	
+	$DefaultDomainArray=explode(".",$DefaultDomain);
+	
+	$SelectVersion="<select name='ScriptID' id='ScriptID' class=Select>";
+	$Result = SQL("select * from Script where ScriptFile=? order by ScriptID", [$ScriptFile]);
+	foreach ($Result as $Row)
+	{
+		if ($Row['ScriptID']==$ScriptID)
+		{
+		$SelectVersion.="<option value='{$Row['ScriptID']}' selected>{$Row['ScriptVersion']} ({$Row['ScriptLanguage']})</option>";
+		}
+		else
+		{
+		$SelectVersion.="<option value='{$Row['ScriptID']}'>{$Row['ScriptVersion']} ({$Row['ScriptLanguage']})</option>";
+		}
+	}
+	
+	$SelectVersion.="</select>";
+	
+	$Name=$DefaultDomainArray[0]."_".$ScriptFile;
+	$Name=str_replace("-","",$Name);
+	
+	$User=$DefaultDomainArray[0]."_".$ScriptFile;
+	$User=str_replace("-","",$User);
+	
+	$Content=DesignCode($Content,"$Control (Content)");
+	echo $Content;
+
+
 
 
 

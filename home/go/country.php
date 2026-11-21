@@ -13,11 +13,11 @@ include "access.php";
 
 	if ($Action=="Enable")
 	{
-		SQL("UPDATE Country set Whitelist='1' where ID='$ID'");
+		SQL("UPDATE Country set Whitelist='1' where ID=?", [$ID]);
 	}
 	else
 	{
-		SQL("UPDATE Country set Whitelist='0' where ID='$ID'");
+		SQL("UPDATE Country set Whitelist='0' where ID=?", [$ID]);
 	}
 	
 }
@@ -39,11 +39,11 @@ include "access.php";
 	<tr>
 	
     <TH align='$DAlign' width='90%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Name')\">{$LNG['Name']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Name')\">{$LNG['Name']}</a>
     </TH>
 
     <TH align='$OAlign' width='10%'>
-	<a href=\"javascript:Load('$CurrentFileName?SortBy=Whitelist&Direction=DESC')\">{$LNG['Whitelist']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?OrderBy=Whitelist&Direction=DESC')\">{$LNG['Whitelist']}</a>
     </TH>
 	
 	</tr>
@@ -53,12 +53,12 @@ include "access.php";
 	";
 	
 	$Table="Country";$Field="ID>=1";
-	$DefaultSortBy="Name";
+	$DefaultOrderBy="Name";
 	$DefaultDirection="ASC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$ID=$Row['ID'];

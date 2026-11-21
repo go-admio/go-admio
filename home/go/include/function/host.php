@@ -4,7 +4,7 @@
 
 
         // دالة إعداد موقع جديد
-        function CreateNewAccount($ResellerUsername,$ResellerPassword,$ResellerDomain,$Package,$Domain,$Username,$Password,$AccountQuota,$CgiAccess,$FrontpageExtentions,$FtpAccounts,$EmailAccounts,$EmailLists,$SQLDatabases,$SubDomains,$ParkDomains,$AddonDomains,$BandwidthLimit,$CPanelTheme,$IPAddress)
+        function CreateAccount($ResellerUsername,$ResellerPassword,$ResellerDomain,$Package,$Domain,$Username,$Password,$AccountQuota,$CgiAccess,$FrontpageExtentions,$FtpAccounts,$EmailAccounts,$EmailLists,$SQLDatabases,$SubDomains,$ParkDomains,$AddonDomains,$BandwidthLimit,$CPanelTheme,$IPAddress)
         {
         $NewAccountUrl = "http://$ResellerUsername:$ResellerPassword@$ResellerDomain:2086/scripts/wwwacct?plan=$Package&domain=$Domain&Username=$Username&password=$Password&quota=$AccountQuota&cgi=$CgiAccess&frontpage=$FrontpageExtentions&maxftp=$FtpAccounts&maxpop=$EmailAccounts&maxlst=$EmailLists&maxsql=$SQLDatabases&maxsub=$SubDomains&maxpark=$ParkDomains&maxaddon=$AddonDomains&bwlimit=$BandwidthLimit&cpmod=$CPanelTheme&customip=$IPAddress/";
 

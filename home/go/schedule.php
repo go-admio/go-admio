@@ -118,12 +118,12 @@ if ($_REQUEST['Cron']!="" or $_REQUEST['Destination']!="" or $_REQUEST['RemoteDi
 
 if ($Action=="EnableBackup")
 {
-	SQL("UPDATE Site SET Backup='1' where SiteID='$SiteID'");
+SQL("UPDATE Site SET Backup='1' where SiteID=?", [$SiteID]);
 }
 
 if ($Action=="DisableBackup")
 {
-	SQL("UPDATE Site SET Backup='0' where SiteID='$SiteID'");
+SQL("UPDATE Site SET Backup='0' where SiteID=?", [$SiteID]);
 }
 
 if ($Storage=="" or $Storage=="backup")
@@ -378,7 +378,7 @@ echo "
 <form name=\"Form\" method=\"POST\" onsubmit=\"return Submit('$CurrentFileName');\" autocomplete=\"off\" action=\"$CurrentFileName\">
 <input type=hidden name=ControlID value='$ControlID'>
 
-<div class='DivInput {$Dir}DivInput'>{$LNG['StorageBox']}:<br>
+<div class='DivInput {$Dir}DivInput'>{$LNG['StorageBox']}<br>
 
 	<label class=\"radio-enhanced\">
 		<input type='radio' name='Storage' value='backup' onclick=\"Load('schedule.php?ControlID=$ControlID&Storage=backup')\" $BackupCheck>
@@ -652,19 +652,19 @@ Echo "
 <tr>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Backup')\">{$LNG['BackupStatus']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Backup')\">{$LNG['BackupStatus']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=BackupStamp')\">{$LNG['BackupDate']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=BackupStamp')\">{$LNG['BackupDate']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
 </TH>
 
 <TH width='20%'>
@@ -678,12 +678,12 @@ Echo "
 ";
 
 $Table="Site";$Field="Trash=0";
-$DefaultSortBy="Domain";
+$DefaultOrderBy="Domain";
 $DefaultDirection="ASC";
 include "include/sql.php";
 
 $X=0;
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	$SiteID=$Row['SiteID'];

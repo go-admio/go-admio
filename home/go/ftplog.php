@@ -5,7 +5,7 @@ $Buttons="";
 include "title.php";
 
 $ServiceControl=$_REQUEST['ServiceControl'];$CTabNo=$_REQUEST['CTabNo'];$Edit=$_REQUEST['Edit'];$Delete=$_REQUEST['Delete'];
-$Step=$_REQUEST['Step'];$SortBy=$_REQUEST['SortBy'];$Badwords=$_REQUEST['Badwords'];$FormSearch=$_REQUEST['FormSearch'];
+$Step=$_REQUEST['Step'];$OrderBy=$_REQUEST['OrderBy'];$Badwords=$_REQUEST['Badwords'];$FormSearch=$_REQUEST['FormSearch'];
 $FilterSql=trim($_REQUEST['FilterSql']);
 $SearchFor=trim($_REQUEST['SearchFor']);
 $Name=$_REQUEST['Name'];
@@ -40,13 +40,13 @@ $FtplogID=$_REQUEST['FtplogID'];
 		echo $Header;
 
 		$Table="Ftplog";$Field="FtplogID>=1";
-		$DefaultSortBy="TimeStamp";
+		$DefaultOrderBy="TimeStamp";
 		$DefaultDirection="DESC";
 		include "include/sql.php";
 	
 
 		$X=0;
-		$Result = SQL($Sql);
+		$Result = SQL($SQL);
 		foreach ($Result as $Row)
 		{
 

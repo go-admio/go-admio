@@ -41,31 +41,31 @@ This feature allows each domain on your server to send emails <strong>through Ro
 	<tr>
 	
     <TH align='$DAlign' width='25%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=RoundcubeSMTPHost')\">SMTP Hostname</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=RoundcubeSMTPHost')\">SMTP Hostname</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=RoundcubeSMTPUser')\">SMTP Username</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=RoundcubeSMTPUser')\">SMTP Username</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=RoundcubeSMTPPass')\">SMTP Password</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=RoundcubeSMTPPass')\">SMTP Password</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=RoundcubeSMTPPort')\">SMTP Port</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=RoundcubeSMTPPort')\">SMTP Port</a>
     </TH>
 	
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=SMTPAuth')\">SMTP Auth</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=SMTPAuth')\">SMTP Auth</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=RoundcubeSMTPAuth')\">Active</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=RoundcubeSMTPAuth')\">Active</a>
     </TH>
 
 	</tr>
@@ -82,12 +82,12 @@ This feature allows each domain on your server to send emails <strong>through Ro
 
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
     
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

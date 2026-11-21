@@ -26,15 +26,14 @@ include "access.php";
 
 	if ($Action=="Enable")
 	{
-		SQL("UPDATE Site set FPM='1' where Domain='$Domain'");
-	
+		SQL("UPDATE Site set FPM='1' where Domain=?", [$Domain]);	
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		echo Error("$Error");
 	}
 	
 	if ($Action=="Disable")
 	{
-		SQL("UPDATE Site set FPM='0' where Domain='$Domain'");
+		SQL("UPDATE Site set FPM='0' where Domain=?", [$Domain]);
 	
 		$Error=SSH ("/usr/bin/sudo /go/apache $Domain",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
 		echo Error("$Error");
@@ -59,13 +58,13 @@ include "access.php";
 	}
 	
 	$Table="Site";$Field="Trash=0";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$SiteID=$Row['SiteID'];

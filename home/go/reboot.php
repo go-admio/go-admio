@@ -1,5 +1,7 @@
 <?php
 include "navigator.php";
+$Buttons="";
+include "title.php";
 
 $TimeStamp=time();
 

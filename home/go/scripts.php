@@ -38,21 +38,21 @@ exit;
 	<tr>
 	
     <TH align=$DAlign width='30%' height=40>
-	<a href=\"javascript:Load('$CurrentFileName?ControlID=$ControlID&SortBy=ScriptName')\">{$LNG['ScriptName']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?ControlID=$ControlID&OrderBy=ScriptName')\">{$LNG['ScriptName']}</a>
     </TH>
 	
 
     <TH align=$DAlign width='20%'>
-    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&SortBy=Category'>{$LNG['Category']}</a>
+    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&OrderBy=Category'>{$LNG['Category']}</a>
     </TH>
 	
     <TH align=$DAlign width='20%'>
-    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&SortBy=ScriptVersion'>{$LNG['Version']}</a>
+    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&OrderBy=ScriptVersion'>{$LNG['Version']}</a>
     </TH>
 
 
     <TH align=$DAlign width='20%'>
-    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&SortBy=ScriptLanguage'>{$LNG['Language']}</a>
+    <a href='$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&OrderBy=ScriptLanguage'>{$LNG['Language']}</a>
     </TH>
 	
 
@@ -66,18 +66,18 @@ exit;
 	";
 
 	$Table="Script";$Field="ScriptID>=1";
-	$DefaultSortBy="ScriptName";
+	$DefaultOrderBy="ScriptName";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$ScriptID=$Row['ScriptID'];
 		
 		$ScriptControlID=-1;
-		$ResultQ = SQL("SELECT ControlID from Control where ControlUrl like '%&ScriptFile={$Row['ScriptFile']}'");
+		$ResultQ = SQL("SELECT ControlID from Control where ControlUrl like ?", ['%&ScriptFile='.$Row['ScriptFile']]);
 		foreach ($ResultQ as $RowQ)
 		{
 		$ScriptControlID=$RowQ['ControlID'];

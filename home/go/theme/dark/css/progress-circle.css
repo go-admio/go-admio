@@ -1,11 +1,3 @@
-body{
-  font-family: 'Open Sans Condensed', sans-serif;
-}
-
-h1 {
-  color: #63B8FF;
-  text-align: center; }
-
 .progress-circle {
   position: relative;
   display: inline-block;

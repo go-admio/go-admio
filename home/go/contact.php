@@ -28,17 +28,15 @@ if ($_REQUEST['Action']=="Export")
 	
 	echo "First Name,E-mail Address,Categories\n";
 	
-	
-	
 	if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsername], true))
 	{
-		$Sql = "select * from Contact where ContactID>=1 $EmailToSQL group by EmailFrom order by Name";
+		$SQL="select * from Contact where ContactID>=1 $EmailToSQL group by EmailFrom order by Name";
 	}
 	else
 	{
-		$Sql = "select * from Contact where Domain='{$_SESSION['SessionUsername']}' $EmailToSQL order by Name";
+		$SQL="select * from Contact where Domain='{$_SESSION['SessionUsername']}' $EmailToSQL order by Name";
 	}
-	$Result = SQL($Sql);
+	$Result = SQL($SQL);
 	foreach ($Result as $Row)
 	{
 		echo "{$Row['Name']},{$Row['EmailFrom']},My Contacts\n";
@@ -66,7 +64,7 @@ $Date=date ("Y-m-d",mktime (date("G"),date("i")+$GMT,date("s"),date("m"),date("d
 
 if ($Delete==1)
 {
-	$Result = SQL("DELETE from Contact where ContactID='$ContactID'");
+$Result = SQL("DELETE from Contact where ContactID=?", [$ContactID]);
 }
 else
 {
@@ -96,19 +94,19 @@ Echo "
 <tr>
 
 <TH align='$DAlign' width='35%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Name')\">{$LNG['Name']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Name')\">{$LNG['Name']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=EmailFrom')\">{$LNG['Email']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=EmailFrom')\">{$LNG['Email']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
 </TH>
 
 <TH align='$DAlign' width='20%'>
-<a href=\"javascript:Load('$CurrentFileName?&SortBy=TimeStamp')\">{$LNG['CreatedDate']}</a>
+<a href=\"javascript:Load('$CurrentFileName?&OrderBy=TimeStamp')\">{$LNG['CreatedDate']}</a>
 </TH>
 
 <TH width='5%'>
@@ -122,12 +120,12 @@ Echo "
 ";
 
 $Table="Contact";$Field="ContactID>=1";
-$DefaultSortBy="ContactID";
+$DefaultOrderBy="ContactID";
 $DefaultDirection="ASC";
 include "include/sql.php";
 
 $X=0;
-$Result = SQL($Sql);
+$Result = SQL($SQL);
 foreach ($Result as $Row)
 {
 	

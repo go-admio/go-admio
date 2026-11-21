@@ -17,13 +17,13 @@ header("Expires: 0");
 
 	if (in_array($_SESSION['SessionSSHUsername'], ['root', 'admin', 'go', $SSHUsername], true))
 	{
-		$Sql = "select * from Undelivered where UndeliveredID>=1 $EmailToSQL group by Email order by Email";
+		$SQL="select * from Undelivered where UndeliveredID>=1 $EmailToSQL group by Email order by Email";
 	}
 	else
 	{
-		$Sql = "select * from Undelivered where Domain='{$_SESSION['SessionUsername']}' $EmailToSQL order by Email";
+		$SQL="select * from Undelivered where Domain='{$_SESSION['SessionUsername']}' $EmailToSQL order by Email";
 	}
-	$Result = SQL($Sql);
+	$Result=SQL($SQL);
 	foreach ($Result as $Row)
 	{
 	echo "{$Row['Email']}\n";
@@ -73,7 +73,7 @@ if ($Delete==1)
 {
 
 	
-	$Result = SQL("DELETE from Undelivered where UndeliveredID='$UndeliveredID'");
+$Result = SQL("DELETE from Undelivered where UndeliveredID=?", [$UndeliveredID]);
 
 }
 
@@ -104,17 +104,17 @@ $_SESSION['UndeliveredLock']=1;
 	<tr>
 
     <TH align='$DAlign' width='30%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
 
     <TH align='$DAlign' width='40%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Email')\">{$LNG['InvalidEmail']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Email')\">{$LNG['InvalidEmail']}</a>
     </TH>
 	
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Email')\">{$LNG['CreatedDate']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Email')\">{$LNG['CreatedDate']}</a>
     </TH>
 
     <TH width='10%'>
@@ -128,12 +128,12 @@ $_SESSION['UndeliveredLock']=1;
 	";
 
 	$Table="Undelivered";$Field="UndeliveredID>=1";
-	$DefaultSortBy="UndeliveredID";
+	$DefaultOrderBy="UndeliveredID";
 	$DefaultDirection="DESC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$UndeliveredID=$Row['UndeliveredID'];

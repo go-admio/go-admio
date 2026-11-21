@@ -41,12 +41,12 @@ exit;
 	
 
 	$Table="Mysql";$Field="MysqlID>=1";
-	$DefaultSortBy="Name";
+	$DefaultOrderBy="Name";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$Name=$Row['Name'];

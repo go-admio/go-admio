@@ -2,7 +2,7 @@
 
 include "navigator.php";
 $Buttons="
-<a href=\"javascript:Load('site.php')\" class='ButtonB {$Dir}ButtonB'>{$LNG['CreateNewAccount']}</a>
+<a href=\"javascript:Load('site.php')\" class='ButtonB {$Dir}ButtonB'>{$LNG['CreateAccount']}</a>
 ";
 include "title.php";
 
@@ -33,7 +33,7 @@ exit;
 If ($Action=="ListOwner")
 {
 	echo "
-	<div class='DivInput {$Dir}DivInput'>Select a New Owner ($Domain):<BR>
+	<div class='DivInput {$Dir}DivInput'>Select a New Owner ($Domain)<BR>
 	";
 
 		$Result = SQL("select * from User where UserID>=1");
@@ -80,7 +80,7 @@ If ($Action=="ListOwner")
 	
 if ($ChangeOwner==1)
 {
-	SQL("UPDATE Site set UserID='$UserID' where Domain='$Domain'");	
+	SQL("UPDATE Site SET UserID = ? WHERE Domain = ?", [$UserID, $Domain]);
 }
 
 
@@ -106,15 +106,15 @@ if ($ChangeOwner==1)
 	<tr>
 	
     <TH align=$DAlign width='20%' height=40>
-	<a href=\"javascript:Load('$CurrentFileName?ControlID=$ControlID&SortBy=Domain')\">{$LNG['Domain']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?ControlID=$ControlID&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 
     <TH align=$DAlign width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&SortBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&OrderBy=SpaceUsed')\">{$LNG['DiskUsage']}</a>
 	</TH>
 	
     <TH align=$DAlign width='15%'>
-	<a href=\"javascript:Load('$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&SortBy=BandwidthUsed')\">{$LNG['BandwidthUsage']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?Service=$Service&ControlID=$ControlID&ServiceControl=$ServiceControl&OrderBy=BandwidthUsed')\">{$LNG['BandwidthUsage']}</a>
     </TH>
 
 
@@ -156,14 +156,12 @@ if ($ChangeOwner==1)
 
 
 	$Table="Site";$Field="SiteID>=1";
-	$DefaultSortBy="Domain";
+	$DefaultOrderBy="Domain";
 	$DefaultDirection="ASC";
 	include "include/sql.php";
 
-
-
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$UserID=$Row['UserID'];

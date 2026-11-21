@@ -26,31 +26,31 @@ $Error=SSH ("/usr/bin/sudo screen -d -m bash -c '/go/spam track'",$_SESSION['Ses
 	<tr>
 	
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Domain')\">{$LNG['Domain']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Domain')\">{$LNG['Domain']}</a>
     </TH>
 	
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=EmailFrom')\">{$LNG['From']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=EmailFrom')\">{$LNG['From']}</a>
     </TH>
 
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=EmailTo')\">{$LNG['To']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=EmailTo')\">{$LNG['To']}</a>
     </TH>
 
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=EmailTo')\">{$LNG['Subject']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=EmailTo')\">{$LNG['Subject']}</a>
     </TH>
 
     <TH align='$DAlign' width='15%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Status')\">{$LNG['Status']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Status')\">{$LNG['Status']}</a>
     </TH>
 
     <TH align='$DAlign' width='5%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Folder')\">{$LNG['Folder']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Folder')\">{$LNG['Folder']}</a>
     </TH>
 
     <TH width='20%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=TimeStamp')\">{$LNG['Date']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=TimeStamp')\">{$LNG['Date']}</a>
     </TH>
 	
 	</tr>
@@ -60,13 +60,13 @@ $Error=SSH ("/usr/bin/sudo screen -d -m bash -c '/go/spam track'",$_SESSION['Ses
 	";
 	
 	$Table="Track";$Field="TrackID>=1";
-	$DefaultSortBy="TimeStamp";
+	$DefaultOrderBy="TimeStamp";
 	$DefaultDirection="DESC";
 	include "include/sql.php";
 	
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 		$Domain=$Row['Domain'];

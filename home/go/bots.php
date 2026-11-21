@@ -12,11 +12,11 @@ if ($Action!="")
 
 	if ($Action=="Enable")
 	{
-		SQL("UPDATE Bot set Block='1' where ID='$ID'");
+		SQL("UPDATE Bot set Block='1' where ID=?", [$ID]);
 	}
 	else
 	{
-		SQL("UPDATE Bot set Block='0' where ID='$ID'");
+		SQL("UPDATE Bot set Block='0' where ID=?", [$ID]);
 	}
 	
 	$Error=SSH ("/usr/bin/sudo /go/conf --schedule",$_SESSION['SessionSSHUsername'],$_SESSION['SessionSSHPassword']);
@@ -42,15 +42,15 @@ if ($Action!="")
 	<tr>
 	
     <TH align='$DAlign' width='60%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Name')\">{$LNG['Name']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Name')\">{$LNG['Name']}</a>
     </TH>
 
     <TH align='$DAlign' width='20%'>
-    <a href=\"javascript:Load('$CurrentFileName?&SortBy=Block')\">{$LNG['Blocked']}</a>
+    <a href=\"javascript:Load('$CurrentFileName?&OrderBy=Block')\">{$LNG['Blocked']}</a>
     </TH>
 	
     <TH width='20%'>
-	<a href=\"javascript:Load('$CurrentFileName?&SortBy=Block')\">{$LNG['Action']}</a>
+	<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Block')\">{$LNG['Action']}</a>
     </TH>
 	
 	</tr>
@@ -60,12 +60,12 @@ if ($Action!="")
 	";
 	
 	$Table="Bot";$Field="ID>=1";
-	$DefaultSortBy="Name";
+	$DefaultOrderBy="Name";
 	$DefaultDirection="ASC";
 	include "include/sql.php";    
 
 	$X=0;
-    $Result = SQL($Sql);
+    $Result = SQL($SQL);
     foreach ($Result as $Row)
     {
 	$ID=$Row['ID'];

@@ -32,19 +32,14 @@ If ($Delete==1 and $Step==1)
 
 if ($Delete==1 and $Step==2)
 {
-
-	SQL("DELETE from Package where PackageID='$PackageID'");
+	SQL("DELETE from Package where PackageID=?", [$PackageID]);
 	echo Error("Package $Name has been deleted.");
-	
-
 }
 elseif ($Name!="" and $Action!="Edit")
 {
 	if ($Edit==1)
 	{
-	
-	
-		SQL("UPDATE Package SET Name='$Name',DiskSpace='$DiskSpace',Bandwidth='$Bandwidth',Inode='$Inode',FTPNo='$FTPNo',EmailNo='$EmailNo',DatabaseNo='$DatabaseNo',SubDomainNo='$SubDomainNo',AliasNo='$AliasNo',AddonNo='$AddonNo',Shell='$Shell',SSLCertificate='$SSLCertificate',ControlFile='$ControlFile' where PackageID='$PackageID'");
+		SQL("UPDATE Package SET Name=?,DiskSpace=?,Bandwidth=?,Inode=?,FTPNo=?,EmailNo=?,DatabaseNo=?,SubDomainNo=?,AliasNo=?,AddonNo=?,Shell=?,SSLCertificate=?,ControlFile=? where PackageID=?", [$Name,$DiskSpace,$Bandwidth,$Inode,$FTPNo,$EmailNo,$DatabaseNo,$SubDomainNo,$AliasNo,$AddonNo,$Shell,$SSLCertificate,$ControlFile,$PackageID]);
 		echo Error("Package $Name updated successfully.");
 	
 		$Edit="";
@@ -52,7 +47,7 @@ elseif ($Name!="" and $Action!="Edit")
 	else
 	{
 		$TimeStamp=time();
-	    SQL("INSERT INTO Package (Name,DiskSpace,Bandwidth,Inode,FTPNo,EmailNo,DatabaseNo,SubDomainNo,AliasNo,AddonNo,Shell,SSLCertificate,ControlFile,TimeStamp,UserID) VALUES ('$Name','$DiskSpace','$Bandwidth','$Inode','$FTPNo','$EmailNo','$DatabaseNo','$SubDomainNo','$AliasNo','$AddonNo','$Shell','$SSLCertificate','$ControlFile','$TimeStamp','{$_SESSION['SessionUserID']}')");
+		SQL("INSERT INTO Package (Name,DiskSpace,Bandwidth,Inode,FTPNo,EmailNo,DatabaseNo,SubDomainNo,AliasNo,AddonNo,Shell,SSLCertificate,ControlFile,TimeStamp,UserID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [$Name,$DiskSpace,$Bandwidth,$Inode,$FTPNo,$EmailNo,$DatabaseNo,$SubDomainNo,$AliasNo,$AddonNo,$Shell,$SSLCertificate,$ControlFile,$TimeStamp,$_SESSION['SessionUserID']]);
 		echo Error("Package $Name created successfully.");
 		
 	}
@@ -74,8 +69,7 @@ elseif ($Name!="" and $Action!="Edit")
 
 	if ($Edit==1)
 	{
-		$Sql = "select * from Package where PackageID='$PackageID'";
-		$Result = SQL($Sql);
+		$Result = SQL("select * from Package where PackageID=?", [$PackageID]);
 		foreach ($Result as $Row)
 		{ 
 	
@@ -238,11 +232,11 @@ elseif ($Name!="" and $Action!="Edit")
 		</th>
 		
 		<th align='$DAlign' width='38%'>
-		<a href=\"javascript:Load('$CurrentFileName?&SortBy=Name')\">Name</a>
+		<a href=\"javascript:Load('$CurrentFileName?&OrderBy=Name')\">Name</a>
 		</th>
 		
 		<th align='$DAlign' width='30%'>
-		<a href=\"javascript:Load('$CurrentFileName?&SortBy=DiskSpace')\">Disk Space</a>
+		<a href=\"javascript:Load('$CurrentFileName?&OrderBy=DiskSpace')\">Disk Space</a>
 		</th>
 
 		<th width='30%'>
@@ -256,10 +250,9 @@ elseif ($Name!="" and $Action!="Edit")
 		";
 
 		$X=0;
-		$Result = SQL("SELECT * FROM Package WHERE UserID='{$_SESSION['SessionUserID']}' ORDER BY Name");
+		$Result = SQL("SELECT * FROM Package WHERE UserID=? ORDER BY Name", [$_SESSION['SessionUserID']]);
 		foreach ($Result as $Row)
 		{
-			
 			$PackageID=$Row['PackageID'];
 			$Email=$Row['Email'];
 		
